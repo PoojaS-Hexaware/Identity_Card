@@ -24,7 +24,7 @@ app.listen(port, function () {
 
 
 app.post("/CreateIdCard", function(req, res) {
-  if (req.body.result.parameters.any && req.body.result.parameters.email
+  /*if (req.body.result.parameters.any && req.body.result.parameters.email
     && req.body.result.parameters.number && req.body.result.parameters.Designation ) {
     return res.json({
       speech: req.body.result.parameters.any,
@@ -49,27 +49,41 @@ app.post("/CreateIdCard", function(req, res) {
       displayText: "Give your Designation" , 
       source: "webhook"
     });
-  }
+  }*/
     /*global.speech =
       req.body.result &&
       req.body.result.parameters &&
       req.body.result.parameters.any
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
-      /*if (req.body.result.parameters.any && req.body.result.parameters.email
-        && req.body.result.parameters.number && req.body.result.parameters.Designation) {
+      if (req.body.result.parameters.any) {
+        if (!req.body.result.parameters.email) {
           return res.json({
+            speech: "Give your email Id",
+            displayText: "Give your email Id", 
+            source: "webhook"
+          });
+        }
+        if (!req.body.result.parameters.number) {
+          return res.json({
+            speech: "Give your number",
+            displayText: "Give your number", 
+            source: "webhook"
+          });
+        }
+        if (!req.body.result.parameters.Designation) {
+          return res.json({
+            speech: "Give your Designation" ,
+            displayText: "Give your Designation" , 
+            source: "webhook"
+          });
+        }
+        return res.json({
             speech: req.body.result.parameters.any,
             displayText: "Id successfully submitted!!",
             source: "webhook"
           });
-        } else {
-            return res.json({
-            speech: "Give your email Id" ,
-            displayText: "Give your email Id" , 
-            source: "webhook"
-         });
-        }*/
+        } 
     });
 
    
