@@ -61,13 +61,7 @@ app.post("/CreateIdCard", function(req, res) {
           source: "webhook"
         });
       } 
-    } else {
-      return res.json({
-        speech: "Give your name" ,
-        displayText: "Give your name" , 
-        source: "webhook"
-      });
-    }
+    } 
   });
  
     /*if (req.body.result.parameters.any) {
