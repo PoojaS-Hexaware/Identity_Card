@@ -36,10 +36,11 @@ app.post("/CreateIdCard", function(req, res) {
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
 
-    
-    return res.json({
-      speech: speech.name,
-      displayText: "Id card request submitted successfully!",
-      source: "webhook"
-    });
+    if (req.body.result.parameters.any != 'null') {
+      return res.json({
+        speech: req.body.result.parameters.any,
+        displayText: "What is your email Id",
+        source: "webhook"
+      });
+    }
   });
