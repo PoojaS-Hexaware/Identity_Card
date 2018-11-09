@@ -39,21 +39,19 @@ app.post("/CreateIdCard", function(req, res) {
         displayText: "Id successfully submitted!!",
         source: "webhook"
       });
-    } else if (req.body.result.parameters.any && !req.body.result.parameters.email) {
+    } else if ( req.body.result.parameters.email == 'null') {
       return res.json({
         speech: "Give your email Id" ,
         displayText: "Give your email Id" , 
         source: "webhook"
       });
-    } else if (req.body.result.parameters.any && req.body.result.parameters.email
-      && !req.body.result.parameters.number) {
+    } else if (req.body.result.parameters.number == 'null') {
       return res.json({
         speech: "Give your phone number" ,
         displayText: "Give your phone number" , 
         source: "webhook"
       });
-    } else if (req.body.result.parameters.any && req.body.result.parameters.email
-      && req.body.result.parameters.number && !req.body.result.parameters.Designation ) {
+    } else if (req.body.result.parameters.Designation == 'null') {
       return res.json({
         speech: "Give your Designation" ,
         displayText: "Give your Designation" , 
