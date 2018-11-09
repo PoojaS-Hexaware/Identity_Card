@@ -34,7 +34,7 @@ app.post("/CreateIdCard", function(req, res) {
     if (req.body.result.parameters.any && req.body.result.parameters.email) {
       return res.json({
         speech: req.body.result.parameters.any,
-        displayText: "Give your email Id",
+        displayText: "Id successfully submitted!!",
         source: "webhook"
       });
     } else {
