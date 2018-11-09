@@ -4,17 +4,13 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
-global.speech = {
+/*global.speech = {
   name:null,
   email:null,
   number:null,
   Designation:null,
-};
+};*/
 
-speech.name = req.body.result.parameters.any;
-speech.email = req.body.result.parameters.email;
-speech.number = req.body.result.parameters.number;
-speech.Designation = req.body.result.parameters.Designation;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
