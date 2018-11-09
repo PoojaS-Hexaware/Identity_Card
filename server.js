@@ -27,7 +27,7 @@ app.post("/CreateIdCard", function(req, res) {
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
     return res.json({
-      speech: speech,
+      speech: "Id card request submitted successfully!",
       displayText: "Id card request submitted successfully!",
       source: "webhook"
     });
