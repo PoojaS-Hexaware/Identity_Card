@@ -22,10 +22,6 @@ app.listen(port, function () {
  console.log(`Example app listening on port !`);
 });
 
-function CreateId(agent) {
-  const name = agent.parameters['any'];
-  const email = agent.parameters['email'];
-}
 
 app.post("/CreateIdCard", function(req, res) {
     /*global.speech =
@@ -35,16 +31,16 @@ app.post("/CreateIdCard", function(req, res) {
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
 
-    if (name && email) {
+    if (req.body.result.parameters.any && req.body.result.parameters.email) {
       return res.json({
         speech: req.body.result.parameters.any,
-        displayText: "What is your email Id",
+        displayText: "Give your email Id",
         source: "webhook"
       });
     } else {
        return res.json({
-         speech: "what is your email Id" ,
-         displayText: "what is your email ID" , 
+         speech: "Give your email Id" ,
+         displayText: "Give your email Id" , 
          source: "webhook"
        })
     }
