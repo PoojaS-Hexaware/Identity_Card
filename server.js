@@ -9,7 +9,7 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.get('/', function (req, res) {
- global.speech = req.outputContexts.parameters.any;
+ //global.speech = req.outputContexts.parameters.any;
  res.send(JSON.stringify({ Hello: 'World'}));
 });
 app.listen(port, function () {
@@ -27,7 +27,7 @@ app.post("/CreateIdCard", function(req, res) {
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
     return res.json({
-      speech: "Id card request submitted successfully!",
+      speech: req.body.result.parameters.any,
       displayText: "Id card request submitted successfully!",
       source: "webhook"
     });
