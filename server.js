@@ -22,7 +22,10 @@ app.listen(port, function () {
  console.log(`Example app listening on port !`);
 });
 
-
+function CreateId(agent) {
+  const name = agent.parameters['any'];
+  const email = agent.parameters['email'];
+}
 
 app.post("/CreateIdCard", function(req, res) {
     /*global.speech =
@@ -32,7 +35,7 @@ app.post("/CreateIdCard", function(req, res) {
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
 
-    if (req.body.result.parameters.any != 'null' && req.body.result.parameters.email != 'null') {
+    if (name && email) {
       return res.json({
         speech: req.body.result.parameters.any,
         displayText: "What is your email Id",
