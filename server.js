@@ -30,7 +30,8 @@ app.post("/CreateIdCard", function(req, res) {
       req.body.result.parameters.any
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
-      if (req.body.result.parameters.any) {
+      if (req.body.result.parameters.any && req.body.result.parameters.email
+        && req.body.result.parameters.number && req.body.result.parameters.Designation) {
           return res.json({
             speech: req.body.result.parameters.any,
             displayText: "Id successfully submitted!!",
