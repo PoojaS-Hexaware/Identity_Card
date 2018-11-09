@@ -30,9 +30,22 @@ app.post("/CreateIdCard", function(req, res) {
       req.body.result.parameters.any
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
+      if (req.body.result.parameters.any) {
+          return res.json({
+            speech: req.body.result.parameters.any,
+            displayText: "Id successfully submitted!!",
+            source: "webhook"
+          });
+          } else {
+            return res.json({
+            speech: "Give your email Id" ,
+            displayText: "Give your email Id" , 
+            source: "webhook"
+         });
+        }
+    });
 
-
-    if (req.body.result.parameters.any && req.body.result.parameters.email
+   /* if (req.body.result.parameters.any && req.body.result.parameters.email
       && req.body.result.parameters.number && req.body.result.parameters.Designation ) {
       return res.json({
         speech: req.body.result.parameters.any,
@@ -57,20 +70,5 @@ app.post("/CreateIdCard", function(req, res) {
         displayText: "Give your Designation" , 
         source: "webhook"
       });
-    }
-  });
+    }*/
  
-    /*if (req.body.result.parameters.any) {
-        return res.json({
-          speech: req.body.result.parameters.any,
-          displayText: "Id successfully submitted!!",
-          source: "webhook"
-        }) else {
-       return res.json({
-         speech: "Give your email Id" ,
-         displayText: "Give your email Id" , 
-         source: "webhook"
-       })
-      }
-    }
-*/
