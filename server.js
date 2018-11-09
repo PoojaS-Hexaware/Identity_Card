@@ -4,7 +4,17 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
+global.speech = {
+  name:null,
+  email:null,
+  number:null,
+  Designation:null,
+};
 
+speech.name = req.body.result.parameters.any;
+speech.email = req.body.result.parameters.email;
+speech.number = req.body.result.parameters.number;
+speech.Designation = req.body.result.parameters.Designation;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -18,7 +28,6 @@ app.listen(port, function () {
 
 
 
-
 app.post("/CreateIdCard", function(req, res) {
     /*global.speech =
       req.body.result &&
@@ -26,8 +35,10 @@ app.post("/CreateIdCard", function(req, res) {
       req.body.result.parameters.any
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
+
+    
     return res.json({
-      speech: req.body.result.parameters.any,
+      speech: speech.name,
       displayText: "Id card request submitted successfully!",
       source: "webhook"
     });
