@@ -60,12 +60,14 @@ app.post("/demo", function(req, res) {
               source: "webhook"
             })
           }
+          if (req.body.result.Designation) {
+            return res.json({
+              speech: req.body.result.parameters.any,
+              displayText: "Id successfully submitted!!",
+              source: "webhook"
+            });
+          }
         }
-        return res.json({
-          speech: req.body.result.parameters.any,
-          displayText: "Id successfully submitted!!",
-          source: "webhook"
-        });
     });
 
    
