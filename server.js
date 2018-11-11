@@ -31,12 +31,6 @@ app.post("/demo", function(req, res) {
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
       if (!req.body.result.parameters.any) {
-          res.json({
-            speech: "Give your name",
-            displayText: "Give your name", 
-            source: "webhook"
-          })
-        
         if (!req.body.result.parameters.email) {
           res.json({
             speech: "Give your email Id",
@@ -67,7 +61,7 @@ app.post("/demo", function(req, res) {
               source: "webhook"
             });
           }
-        }
+        }               
     });
 
    
