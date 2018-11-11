@@ -63,14 +63,14 @@ app.post("/CreateIdCard", function(req, res) {
             displayText: "Give your email Id", 
             source: "webhook"
           })
-          if (!req.body.result.parameters.number) {
+          if (!req.body.result.createidcard-followup.parameters.number) {
             return res.json({
               speech: "Give your number",
               displayText: "Give your number", 
               source: "webhook"
             })
           }
-          if (!req.body.result.parameters.Designation) {
+          if (!req.body.result.createidcard-followup.parameters.Designation) {
             return res.json({
               speech: "Give your Designation" ,
               displayText: "Give your Designation" , 
