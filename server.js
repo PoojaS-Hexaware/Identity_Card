@@ -63,6 +63,7 @@ app.post("/CreateIdCard", function(req, res) {
             displayText: "Give your email Id", 
             source: "webhook"
           })
+        }
           if (!req.body.result.createidcard-followup.parameters.number) {
             return res.json({
               speech: "Give your number",
@@ -77,9 +78,7 @@ app.post("/CreateIdCard", function(req, res) {
               source: "webhook"
             })
           }
-        }
-        
-        return res.json({
+          return res.json({
             speech: req.body.result.parameters.any,
             displayText: "Id successfully submitted!!",
             source: "webhook"
