@@ -23,7 +23,7 @@ app.listen(port, function () {
 });
 
 
-app.post("/CreateIdCard", function(req, res) {
+app.post("/demo", function(req, res) {
   /*if (req.body.result.parameters.any && req.body.result.parameters.email
     && req.body.result.parameters.number && req.body.result.parameters.Designation ) {
     return res.json({
@@ -64,6 +64,8 @@ app.post("/CreateIdCard", function(req, res) {
             source: "webhook"
           })
         }
+      }
+      if (req.body.result.parameters.email) {
           if (!req.body.result.parameters.number) {
             return res.json({
               speech: "Give your number",
