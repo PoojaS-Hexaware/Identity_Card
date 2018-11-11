@@ -30,7 +30,7 @@ app.post("/demo", function(req, res) {
       req.body.result.parameters.any
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
-      if (!req.body.result.parameters.any) {
+      if (req.body.result.parameters.any) {
         if (!req.body.result.parameters.email) {
           res.json({
             speech: "Give your email Id",
