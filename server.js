@@ -64,10 +64,8 @@ app.post("/demo", function(req, res) {
       displayText: "submitted" , 
       source: "webhook"
       });
-    }
-  }
-    if (req.body.result.Designation) {
-      return {
+    } else if (req.body.result.Designation) {
+      return res.json({
         "conversationToken": "",
         "expectUserResponse": true,
         "expectedInputs": [
@@ -90,7 +88,8 @@ app.post("/demo", function(req, res) {
                           }
                         }
               }]
-            }
+            });
           }
+        }
 });
          
