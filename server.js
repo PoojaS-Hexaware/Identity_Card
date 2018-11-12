@@ -58,7 +58,7 @@ app.post("/demo", function(req, res) {
           displayText: "Give your number", 
           source: "agent"
         });
-      } else if (!req.body.result.Designation) {
+      } else if (!req.body.result.parameters.Designation) {
         return res.json({
         speech: "Give your Designation" ,
         displayText: "submitted" , 
@@ -78,17 +78,15 @@ app.post("/demo", function(req, res) {
                       "items" : [
                           {
                               "simpleResponse" : {
-                                  "textToSpeech":"Service ticket raised successfully. Here is your TICKET"
+                                "textToSpeech": "Id card request submitted!!"
                               }
                           },
                           {
-                              "basicCard": {
-          
-                                  "title": "SERVICE TICKET",
-                                  "subtitle": "ISSUE " +service.issue +" \n  ID - " +service.id,
-                                  "formattedText": "Priority "+service.priority
-                                      
-                                },
+                            "basicCard": {
+                              "title": "Identity Card",
+                              "formattedText": "**Name** : " + req.body.result.any + " \n**Phone Number** : " + req.body.result.number + " \n**Email ID** : " + req.body.result.email + " \n**Designation** : " + req.body.result.Designation,
+                              "buttons": []
+                            }
                           }
                       ]
                   }
