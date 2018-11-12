@@ -42,23 +42,24 @@ app.post("/demo", function(req, res) {
             displayText: "Give your email Id", 
             source: "webhook"
           });
-        } else if (!req.body.result.parameters.number) {
-          return res.json({
-            speech: "Give your number",
-            displayText: "Give your number", 
-            source: "webhook"
-          });
-        } else if (!req.body.result.Designation) {
-          return res.json({
-            speech: "Give your Designation" ,
-            displayText: "Give your Designation" , 
-            source: "webhook"
-          });
-        } else {
-          return res.json({
-            speech: req.body.result.parameters.any,
-            displayText: "Id Request successfully submitted!!",
-            source: "webhook"
-          });
-        }
+        } 
+        if (!req.body.result.parameters.number) {
+            return res.json({
+              speech: "Give your number",
+              displayText: "Give your number", 
+              source: "webhook"
+            });
+          } else if (!req.body.result.Designation) {
+            return res.json({
+              speech: "Give your Designation" ,
+              displayText: "Give your Designation" , 
+              source: "webhook"
+            });
+          } else {
+            return res.json({
+              speech: req.body.result.parameters.any,
+              displayText: "Id Request successfully submitted!!",
+              source: "webhook"
+            });
+          }
     });
