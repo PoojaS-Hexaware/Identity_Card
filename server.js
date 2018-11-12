@@ -30,39 +30,35 @@ app.post("/demo", function(req, res) {
       req.body.result.parameters.any
         ? req.body.result.parameters.any
         : "Seems like some problem. Speak again.";*/
-      if (req.body.result.parameters.any) {
-        if (!req.body.result.parameters.email) {
-          res.json({
+        if (!req.body.result.parameters.any) {
+          return res.json({
+            speech: "Give your name",
+            displayText: "Request successfully submitted", 
+            source: "webhook"
+          });
+        } else if (!req.body.result.parameters.email) {
+          return res.json({
             speech: "Give your email Id",
             displayText: "Give your email Id", 
             source: "webhook"
-          })
-        }
-      }
-      if (req.body.result.parameters.email) {
-          if (!req.body.result.parameters.number) {
-            return res.json({
-              speech: "Give your number",
-              displayText: "Give your number", 
-              source: "webhook"
-            })
-          }
-          if (!req.body.result.Designation) {
-            return res.json({
-              speech: "Give your Designation" ,
-              displayText: "Give your Designation" , 
-              source: "webhook"
-            })
-          }
-        }
-        if (req.body.result.Designation) {
+          });
+        } else if (!req.body.result.parameters.number) {
+          return res.json({
+            speech: "Give your number",
+            displayText: "Give your number", 
+            source: "webhook"
+          });
+        } else if (!req.body.result.Designation) {
+          return res.json({
+            speech: "Give your Designation" ,
+            displayText: "Give your Designation" , 
+            source: "webhook"
+          });
+        } else {
           return res.json({
             speech: req.body.result.parameters.any,
-            displayText: "Id successfully submitted!!",
+            displayText: "Id Request successfully submitted!!",
             source: "webhook"
           });
         }
     });
-
-   
- 
