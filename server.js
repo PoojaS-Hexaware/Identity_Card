@@ -46,7 +46,13 @@ app.post("/demo", function(req, res) {
     }
   } 
   if (req.body.result.metadata.intentName == "Create IdCard - custom") {
-     if (!req.body.result.parameters.number) {
+    if (!req.body.result.parameters.email) {
+      return res.json({
+        speech: "Give your email Id",
+        displayText: "Give your email Id", 
+        source: "webhook"
+      });
+    } else if (!req.body.result.parameters.number) {
       return res.json({
         speech: "Give your number",
         displayText: "Give your number", 
