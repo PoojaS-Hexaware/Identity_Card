@@ -61,16 +61,35 @@ app.post("/demo", function(req, res) {
     } else if (!req.body.result.Designation) {
       return res.json({
       speech: "Give your Designation" ,
-      displayText: "Give your Designation" , 
+      displayText: "submitted" , 
       source: "webhook"
       });
     } else {
-      return res.json({
-      speech: req.body.result.parameters.any,
-      displayText: "Id Request successfully submitted!!",
-      source: "webhook"
-      });
-    }
-  }
+      return {
+        "conversationToken": "",
+        "expectUserResponse": true,
+        "expectedInputs": [
+            {
+                "inputPrompt": {
+                    "richInitialPrompt": {
+                        "items": [
+                            {
+                                "simpleResponse": {
+                                    "textToSpeech": "Math and prime numbers it is!"
+                                }
+                            },
+                            {
+                              "basicCard": {
+                                  "title": "Identity Card",
+                                  "formattedText": "**Name** : Pooja Sharma  \n**Phone Number** : 9680667380\n**Email ID** : pooja@gmail.com  \n**Designation** : Quality Analyst",
+                                  "buttons": []
+                              }                              
+                            }],
+                          }
+                        }
+              }]
+            }
+          }
+        }
 });
          
