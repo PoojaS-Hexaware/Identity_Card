@@ -64,7 +64,7 @@ app.post("/demo", function(req, res) {
       displayText: "submitted" , 
       source: "webhook"
       });
-    } else if (req.body.result.Designation) {
+    } else {
       return res.json({
         "conversationToken": "",
         "expectUserResponse": true,
