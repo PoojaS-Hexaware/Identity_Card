@@ -44,54 +44,95 @@ app.post("/demo", function(req, res) {
         source: "agent"
       });
     }
-  } 
-  if (req.body.result.metadata.intentName == "Create IdCard - custom") {
-    if (!req.body.result.parameters.email) {
-      return res.json({
-        speech: "Give your email Id",
-        displayText: "Give your email Id", 
-        source: "agent"
-      });
-    } else if (!req.body.result.parameters.number) {
-      return res.json({
-        speech: "Give your number",
-        displayText: "Give your number", 
-        source: "agent"
-      });
-    } else if (!req.body.result.Designation) {
-      return res.json({
-      speech: "Give your Designation" ,
-      displayText: "submitted" , 
-      source: "agent"
-      });
-    } 
   }
-    if (req.body.result.email) {
-      return res.json({
-        "conversationToken": "",
-        "expectUserResponse": true,
-        "expectedInputs": [
-            {
-                "inputPrompt": {
-                    "richInitialPrompt": {
-                        "items": [
-                            {
-                                "simpleResponse": {
-                                    "textToSpeech": "Id card request submitted!!"
-                                }
-                            },
-                            {
+    if (req.body.result.metadata.intentName == "Create IdCard - custom") {
+      if (!req.body.result.parameters.email) {
+        return res.json({
+          speech: "Give your email Id",
+          displayText: "Give your email Id", 
+          source: "agent"
+        });
+      } else if (!req.body.result.parameters.number) {
+        return res.json({
+          speech: "Give your number",
+          displayText: "Give your number", 
+          source: "agent"
+        });
+      } else if (!req.body.result.Designation) {
+        return res.json({
+        speech: "Give your Designation" ,
+        displayText: "submitted" , 
+        source: "agent"
+        });
+      } else {
+        return res.json({
+          
+
+          "speech": "this text is spoken out loud if the platform supports voice interactions",
+          "displayText": "this text is displayed visually",
+
+          "data":{
+              "google": {
+                  "expectedUserResponse":true,
+                  "richResponse" : {
+                      "items" : [
+                          {
+                              "simpleResponse" : {
+                                  "textToSpeech":"Service ticket raised successfully. Here is your TICKET"
+                              }
+                          },
+                          {
                               "basicCard": {
-                                  "title": "Identity Card",
-                                  "formattedText": "**Name** : " + req.body.result.any + " \n**Phone Number** : " + req.body.result.number + " \n**Email ID** : " + req.body.result.email + " \n**Designation** : " + req.body.result.Designation,
-                                  "buttons": []
-                              }                              
-                            }]
+          
+                                  "title": "SERVICE TICKET",
+                                  "subtitle": "ISSUE " +service.issue +" \n  ID - " +service.id,
+                                  "formattedText": "Priority "+service.priority
+                                      
+                                },
                           }
-                        }
-              }]
-            });
-          }
-        
-});
-         
+                      ]
+                  }
+                 
+              }
+
+          },
+          "contextOut": [
+              {
+                "name": "_actions_on_google",
+                "lifespan": 99,
+                "parameters": {
+                  "data": "{}"
+                }
+              }
+            ]
+          });
+        }
+      }
+    });
+      /*if (req.body.result.email) {
+        return res.json({
+          "conversationToken": "",
+          "expectUserResponse": true,
+          "expectedInputs": [
+              {
+                  "inputPrompt": {
+                      "richInitialPrompt": {
+                          "items": [
+                              {
+                                  "simpleResponse": {
+                                      "textToSpeech": "Id card request submitted!!"
+                                  }
+                              },
+                              {
+                                "basicCard": {
+                                    "title": "Identity Card",
+                                    "formattedText": "**Name** : " + req.body.result.any + " \n**Phone Number** : " + req.body.result.number + " \n**Email ID** : " + req.body.result.email + " \n**Designation** : " + req.body.result.Designation,
+                                    "buttons": []
+                                }                              
+                              }]
+                            }
+                          }
+                }]
+              });
+            }*/
+          
