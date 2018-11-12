@@ -83,7 +83,7 @@ app.post("/demo", function(req, res) {
                             {
                               "basicCard": {
                                   "title": "Identity Card",
-                                  "formattedText": "**Name** : Pooja Sharma  \n**Phone Number** : 9680667380\n**Email ID** : pooja@gmail.com  \n**Designation** : Quality Analyst",
+                                  "formattedText": "**Name** : " + req.body.result.any + " \n**Phone Number** : " + req.body.result.number + " \n**Email ID** : " + req.body.result.email + " \n**Designation** : " + req.body.result.Designation,
                                   "buttons": []
                               }                              
                             }]
