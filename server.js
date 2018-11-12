@@ -42,8 +42,8 @@ app.post("/demo", function(req, res) {
             displayText: "Give your email Id", 
             source: "webhook"
           });
-        } 
-        if (!req.body.result.parameters.number) {
+        } else if (req.body.result.parameters.email) {
+          if (!req.body.result.parameters.number) {
             return res.json({
               speech: "Give your number",
               displayText: "Give your number", 
@@ -62,4 +62,5 @@ app.post("/demo", function(req, res) {
               source: "webhook"
             });
           }
+        }
     });
