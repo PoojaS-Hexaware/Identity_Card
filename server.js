@@ -33,7 +33,7 @@ app.post("/demo", function(req, res) {
     if (!req.body.result.parameters.any) {
       return res.json({
         speech: "Give your name",
-        displayText: "Request successfully submitted", 
+        displayText: "Give your name", 
         source: "agent"
       });
     }
