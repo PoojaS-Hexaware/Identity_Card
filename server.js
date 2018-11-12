@@ -64,7 +64,8 @@ app.post("/demo", function(req, res) {
       displayText: "submitted" , 
       source: "webhook"
       });
-    } else {
+    } 
+    if (req.body.result.Designation) {
       return {
         "conversationToken": "",
         "expectUserResponse": true,
@@ -84,7 +85,7 @@ app.post("/demo", function(req, res) {
                                   "formattedText": "**Name** : Pooja Sharma  \n**Phone Number** : 9680667380\n**Email ID** : pooja@gmail.com  \n**Designation** : Quality Analyst",
                                   "buttons": []
                               }                              
-                            }],
+                            }]
                           }
                         }
               }]
