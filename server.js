@@ -64,7 +64,9 @@ app.post("/demo", function(req, res) {
       displayText: "submitted" , 
       source: "agent"
       });
-    } else if (req.body.result.email) {
+    } 
+  }
+    if (req.body.result.email) {
       return res.json({
         "conversationToken": "",
         "expectUserResponse": true,
@@ -90,6 +92,6 @@ app.post("/demo", function(req, res) {
               }]
             });
           }
-        }
+        
 });
          
