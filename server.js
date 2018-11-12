@@ -64,7 +64,8 @@ app.post("/demo", function(req, res) {
       displayText: "submitted" , 
       source: "webhook"
       });
-    } 
+    }
+  }
     if (req.body.result.Designation) {
       return {
         "conversationToken": "",
@@ -91,6 +92,5 @@ app.post("/demo", function(req, res) {
               }]
             }
           }
-        }
 });
          
