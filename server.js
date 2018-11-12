@@ -4,6 +4,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
+var requestCard = [
+  name = null,
+  email  = null,
+  number = null,
+  Designation = null
+];
 /*global.speech = {
   name:null,
   email:null,
@@ -68,8 +74,8 @@ app.post("/demo", function(req, res) {
         return res.json({
           
 
-          "speech": "this text is spoken out loud if the platform supports voice interactions",
-          "displayText": "this text is displayed visually",
+          "speech": "Id Card request Submitted successfully !!",
+          "displayText": "Requested updated",
 
           "data":{
               "google": {
@@ -106,31 +112,12 @@ app.post("/demo", function(req, res) {
           });
         }
       }
-    });
-      /*if (req.body.result.email) {
-        return res.json({
-          "conversationToken": "",
-          "expectUserResponse": true,
-          "expectedInputs": [
-              {
-                  "inputPrompt": {
-                      "richInitialPrompt": {
-                          "items": [
-                              {
-                                  "simpleResponse": {
-                                      "textToSpeech": "Id card request submitted!!"
-                                  }
-                              },
-                              {
-                                "basicCard": {
-                                    "title": "Identity Card",
-                                    "formattedText": "**Name** : " + req.body.result.any + " \n**Phone Number** : " + req.body.result.number + " \n**Email ID** : " + req.body.result.email + " \n**Designation** : " + req.body.result.Designation,
-                                    "buttons": []
-                                }                              
-                              }]
-                            }
-                          }
-                }]
-              });
-            }*/
-          
+      requestCard.push(req.body.result.parameters.any, req.body.result.parameters.email,
+        req.body.result.parameters.number, req.body.result.parameters.Designation);
+      app.get('/view',function (req,res ) {
+      if(action = "View list of requests") {
+        res.send(requestCard);
+      }
+     });
+  });
+      
