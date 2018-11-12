@@ -62,12 +62,9 @@ app.post("/demo", function(req, res) {
       return res.json({
       speech: "Give your Designation" ,
       displayText: "submitted" , 
-      source: "webhook"
+      source: "agent"
       });
-    }
-  }
-
-    if (req.body.result.Designation) {
+    } else if (req.body.result.email) {
       return res.json({
         "conversationToken": "",
         "expectUserResponse": true,
@@ -78,7 +75,7 @@ app.post("/demo", function(req, res) {
                         "items": [
                             {
                                 "simpleResponse": {
-                                    "textToSpeech": "Math and prime numbers it is!"
+                                    "textToSpeech": "Id card request submitted!!"
                                 }
                             },
                             {
@@ -93,5 +90,6 @@ app.post("/demo", function(req, res) {
               }]
             });
           }
+        }
 });
          
