@@ -61,7 +61,7 @@ app.post("/demo", function(req, res) {
       } else if (!req.body.result.parameters.Designation) {
         return res.json({
         speech: "Give your Designation" ,
-        displayText: "submitted" , 
+        displayText: "Give your Designation" , 
         source: "agent"
         });
       } else {
@@ -84,7 +84,7 @@ app.post("/demo", function(req, res) {
                           {
                             "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + req.body.result.any + " \n**Phone Number** : " + req.body.result.number + " \n**Email ID** : " + req.body.result.email + " \n**Designation** : " + req.body.result.Designation,
+                              "formattedText": "**Name** : " + req.body.result.parameters.any + " \n**Phone Number** : " + req.body.result.parameters.number + " \n**Email ID** : " + req.body.result.parameters.email + " \n**Designation** : " + req.body.result.parameters.Designation,
                               "buttons": []
                             }
                           }
