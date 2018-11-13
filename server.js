@@ -126,47 +126,49 @@ app.post("/demo", function(req, res) {
         });
       }
     if(req.body.result.metadata.intentName == "ViewRequests") {
-      for (var i = 0; i <= requestCard.idRequest.name.length; i++) {
-        return res.json({
-            
-          "speech": "View Submitted Id card",
-          "displayText": "View Submitted Id card",
-          "data":{
-              "google": {
-                  "expectedUserResponse":true,
-                  "richResponse" : {
-                      "items" : [
-                          {
-                              "simpleResponse" : {
-                                  "textToSpeech": "Submitted ID Card Request are :"
+      for (var i = 0; i <= requestCard.length; i++) {
+        for (var j = 0; j <= requestCard.idRequest[i].length; j++) {
+          return res.json({
+              
+            "speech": "View Submitted Id card",
+            "displayText": "View Submitted Id card",
+            "data":{
+                "google": {
+                    "expectedUserResponse":true,
+                    "richResponse" : {
+                        "items" : [
+                            {
+                                "simpleResponse" : {
+                                    "textToSpeech": "Submitted ID Card Request are :"
+                                }
+                            },
+                            {
+                              "basicCard": {
+                                "title": "Identity Card",
+                                "formattedText": "**Name** : " + requestCard.idRequest.name[j] + 
+                                " \n**Phone Number** : " + requestCard.idRequest.number[j] + 
+                                " \n**Email ID** : " + requestCard.idRequest.email[j] + 
+                                " \n**Designation** : " + requestCard.idRequest.designation[j]
                               }
-                          },
-                          {
-                            "basicCard": {
-                              "title": "Identity Card",
-                              "formattedText": "**Name** : " + requestCard.idRequest.name[i] + 
-                              " \n**Phone Number** : " + requestCard.idRequest.number[i] + 
-                              " \n**Email ID** : " + requestCard.idRequest.email[i] + 
-                              " \n**Designation** : " + requestCard.idRequest.designation[i]
                             }
-                          }
-                      ]
-                  }
-                 
-              }
-
-          },
-          "contextOut": [
-              {
-                "name": "_actions_on_google",
-                "lifespan": 99,
-                "parameters": {
-                  "data": "{}"
+                        ]
+                    }
+                  
                 }
-              }
-            ]
 
-        });
+            },
+            "contextOut": [
+                {
+                  "name": "_actions_on_google",
+                  "lifespan": 99,
+                  "parameters": {
+                    "data": "{}"
+                  }
+                }
+              ]
+
+          });
+        }
       }
     }
   });
