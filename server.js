@@ -75,7 +75,7 @@ app.post("/demo", function(req, res) {
         source: "agent"
         });
       } else {
-        requestCard.id.name.push(req.body.result.contexts.any);
+        requestCard.id.name.push(req.body.contexts.parameters.any);
         console.log(" the name - " +requestCard.id.name);
 
         requestCard.id.email.push(req.body.result.parameters.email);
