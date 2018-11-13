@@ -5,10 +5,10 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
 global.requestCard = [ {
-          "name" : null,
-          "email": null,
-          "number": null,
-          "designation": null            
+          'name' : null,
+          'email': null,
+          'number': null,
+          'designation': null            
 }]
 /*global.speech = {
   name:null,
