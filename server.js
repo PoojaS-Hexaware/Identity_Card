@@ -47,6 +47,8 @@ app.post("/demo", function(req, res) {
         source: "agent"
       });
     }
+    requestCard.idRequest.name.push(req.body.result.parameters.any);
+    console.log(" the name - " +requestCard.idRequest.name);
     if (!req.body.result.parameters.email) {
       return res.json({
         speech: "Give your email Id",
@@ -54,6 +56,8 @@ app.post("/demo", function(req, res) {
         source: "agent"
       });
     }
+    requestCard.idRequest.email.push(req.body.result.parameters.email);
+    console.log(" the email - " +requestCard.idRequest.email);
   }
     if (req.body.result.metadata.intentName == "Create IdCard - custom") {
       if (!req.body.result.parameters.email) {
@@ -74,13 +78,8 @@ app.post("/demo", function(req, res) {
         displayText: "Give your Designation" , 
         source: "agent"
         });
-      } else {
-        requestCard.idRequest.name.push(req.body.contexts.parameters.any);
-        console.log(" the name - " +requestCard.idRequest.name);
-
-        requestCard.idRequest.email.push(req.body.result.parameters.email);
-        console.log(" the email - " +requestCard.idRequest.email);
-
+      } else {      
+          
         requestCard.idRequest.number.push(req.body.result.parameters.number);
         console.log(" the phone number - " +requestCard.idRequest.number);
 
