@@ -112,11 +112,11 @@ app.post("/demo", function(req, res) {
           });
         }
       }
-      requestCard.push(req.body.result.parameters.any, req.body.result.parameters.email,
-        req.body.result.parameters.number, req.body.result.parameters.Designation);
+      requestCard.push([req.body.result.parameters.any, req.body.result.parameters.email,
+        req.body.result.parameters.number, req.body.result.parameters.Designation]);
       app.get('/demo',function (req,res ) {
       if(req.body.result.metadata.intentName == "ViewRequests") {
-        for (var i in requestCard) {
+        for (var i of requestCard) {
           console.log(i);
           return res.send(i);
         }
