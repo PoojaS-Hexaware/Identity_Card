@@ -4,7 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
-var requestCard = [
+var requestCard = [ 
   name = null,
   email  = null,
   number = null,
@@ -115,8 +115,10 @@ app.post("/demo", function(req, res) {
       requestCard.push(req.body.result.parameters.any, req.body.result.parameters.email,
         req.body.result.parameters.number, req.body.result.parameters.Designation);
       app.get('/view',function (req,res ) {
-      if(action = "View list of requests") {
-        res.send(requestCard);
+      if(req.body.result.metadata.intentName == "ViewRequests") {
+        for (var i in requestCard) {
+        res.send(i);
+        }
       }
      });
   });
