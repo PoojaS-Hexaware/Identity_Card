@@ -103,9 +103,9 @@ app.post("/demo", function(req, res) {
                             "basicCard": {
                               "title": "Identity Card",
                               "formattedText": "**Name** : " + requestCard.idRequest.name[requestCard.idRequest.name.length - 1] + 
-                              " \n**Phone Number** : " + req.body.result.parameters.number + 
-                              " \n**Email ID** : " + req.body.result.parameters.email + 
-                              " \n**Designation** : " + req.body.result.parameters.Designation,
+                              " \n**Phone Number** : " + requestCard.idRequest.number[requestCard.idRequest.number.length - 1] + 
+                              " \n**Email ID** : " + requestCard.idRequest.email[requestCard.idRequest.email.length - 1] + 
+                              " \n**Designation** : " + requestCard.idRequest.designation[requestCard.idRequest.designation.length - 1],
                               "buttons": []
                             }
                           }
