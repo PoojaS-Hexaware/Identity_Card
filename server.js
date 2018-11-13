@@ -75,6 +75,17 @@ app.post("/demo", function(req, res) {
         source: "agent"
         });
       } else {
+        requestCard.id.name.push(req.body.result.parameters.any);
+        console.log(" the name - " +requestCard.id.name);
+
+        requestCard.id.email.push(req.body.result.parameters.email);
+        console.log(" the name - " +requestCard.id.email);
+
+        requestCard.id.number.push(req.body.result.parameters.number);
+        console.log(" the name - " +requestCard.id.number);
+
+        requestCard.id.designation.push(req.body.result.parameters.designation);
+        console.log(" the name - " +requestCard.id.designation);
         return res.json({
           
 
@@ -94,7 +105,10 @@ app.post("/demo", function(req, res) {
                           {
                             "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + req.body.contexts.parameters.any + " \n**Phone Number** : " + req.body.result.parameters.number + " \n**Email ID** : " + req.body.result.parameters.email + " \n**Designation** : " + req.body.result.parameters.Designation,
+                              "formattedText": "**Name** : " + requestCard.id.name[requestCard.id.name.length-1] + 
+                              " \n**Phone Number** : " + req.body.result.parameters.number + 
+                              " \n**Email ID** : " + req.body.result.parameters.email + 
+                              " \n**Designation** : " + req.body.result.parameters.Designation,
                               "buttons": []
                             }
                           }
@@ -116,17 +130,7 @@ app.post("/demo", function(req, res) {
           });
         }
       }
-      requestCard.id.name.push(req.body.result.parameters.any);
-      console.log(" the name - " +requestCard.id.name);
-
-      requestCard.id.email.push(req.body.result.parameters.email);
-      console.log(" the name - " +requestCard.id.email);
-
-      requestCard.id.number.push(req.body.result.parameters.number);
-      console.log(" the name - " +requestCard.id.number);
-
-      requestCard.id.designation.push(req.body.result.parameters.designation);
-      console.log(" the name - " +requestCard.id.designation);
+      
       /*requestCard.push([req.body.result.parameters.any, req.body.result.parameters.email,
         req.body.result.parameters.number, req.body.result.parameters.Designation]);*/
       if(req.body.result.metadata.intentName == "ViewRequests") {
