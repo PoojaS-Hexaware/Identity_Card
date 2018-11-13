@@ -114,7 +114,7 @@ app.post("/demo", function(req, res) {
       }
       requestCard.push(req.body.result.parameters.any, req.body.result.parameters.email,
         req.body.result.parameters.number, req.body.result.parameters.Designation);
-      app.get('/view',function (req,res ) {
+      app.get('/demo',function (req,res ) {
       if(req.body.result.metadata.intentName == "ViewRequests") {
         for (var i in requestCard) {
         res.send(i);
