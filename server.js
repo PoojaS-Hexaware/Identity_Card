@@ -49,9 +49,9 @@ app.post("/demo", function(req, res) {
         source: "agent"
       });
     }
-    requestCard[0].push(req.body.result.parameters.any);
+    //requestCard[0].push(req.body.result.parameters.any);
     //console.log(" the name - " +requestCard.idRequest.name);
-    requestCard[1].push(req.body.result.parameters.email);
+    //requestCard[1].push(req.body.result.parameters.email);
       //console.log(" the email - " +requestCard.email);
   }
     if (req.body.result.metadata.intentName == "Create IdCard - custom") {
@@ -68,10 +68,10 @@ app.post("/demo", function(req, res) {
         source: "agent"
         });
       }      
-      requestCard[2].push(req.body.result.parameters.number);
+      //requestCard[2].push(req.body.result.parameters.number);
       //console.log(" the phone number - " +requestCard.number);
 
-      requestCard[3].push(req.body.result.parameters.Designation);
+      //requestCard[3].push(req.body.result.parameters.Designation);
       //console.log(" the designation - " +requestCard.designation);
       return res.json({
         "speech": "Id Card request Submitted successfully !!",
