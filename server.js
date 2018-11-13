@@ -118,7 +118,11 @@ app.post("/demo", function(req, res) {
       if(req.body.result.metadata.intentName == "ViewRequests") {
         for (var i of requestCard) {
           console.log(i);
-          return res.send(i);
+          return res.json({
+            speech: i,
+            displayText: i,
+            source: "agent"
+          });
         }
       }
      });
