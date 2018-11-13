@@ -4,16 +4,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
-global.requestCard ={
-    
-  "idRequest": 
-      {
-          "name":[],
-          "email":[],
-          "number":[],
-          "designation":[]          
-      }   
-};
+global.requestCard = [ {
+          "name" : null,
+          "email": null,
+          "number": null,
+          "designation": null            
+}]
 /*global.speech = {
   name:null,
   email:null,
@@ -47,8 +43,8 @@ app.post("/demo", function(req, res) {
         source: "agent"
       });
     }
-    requestCard.idRequest.name.push(req.body.result.parameters.any);
-    console.log(" the name - " +requestCard.idRequest.name);
+    requestCard.push(req.body.result.parameters.any);
+    //console.log(" the name - " +requestCard.idRequest.name);
     if (!req.body.result.parameters.email) {
       return res.json({
         speech: "Give your email Id",
@@ -77,14 +73,14 @@ app.post("/demo", function(req, res) {
         source: "agent"
         });
       }     
-      requestCard.idRequest.email.push(req.body.result.parameters.email);
-      console.log(" the email - " +requestCard.idRequest.email);
+      requestCard.push(req.body.result.parameters.email);
+      //console.log(" the email - " +requestCard.email);
             
-      requestCard.idRequest.number.push(req.body.result.parameters.number);
-      console.log(" the phone number - " +requestCard.idRequest.number);
+      requestCard.push(req.body.result.parameters.number);
+      //console.log(" the phone number - " +requestCard.number);
 
-      requestCard.idRequest.designation.push(req.body.result.parameters.Designation);
-      console.log(" the designation - " +requestCard.idRequest.designation);
+      requestCard.push(req.body.result.parameters.Designation);
+      //console.log(" the designation - " +requestCard.designation);
       return res.json({
         "speech": "Id Card request Submitted successfully !!",
         "displayText": "Requested updated",
@@ -102,10 +98,10 @@ app.post("/demo", function(req, res) {
                           {
                             "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + requestCard.idRequest.name[requestCard.idRequest.name.length - 1] + 
-                              " \n**Phone Number** : " + requestCard.idRequest.number[requestCard.idRequest.number.length - 1] + 
-                              " \n**Email ID** : " + requestCard.idRequest.email[requestCard.idRequest.email.length - 1] + 
-                              " \n**Designation** : " + requestCard.idRequest.designation[requestCard.idRequest.designation.length - 1]
+                              "formattedText": "**Name** : " + requestCard.name[requestCard.length - 1] + 
+                              " \n**Phone Number** : " + requestCard.number[requestCard.length - 1] + 
+                              " \n**Email ID** : " + requestCard.email[requestCard.length - 1] + 
+                              " \n**Designation** : " + requestCard.designation[requestCard.length - 1]
                             }
                           }
                       ]
@@ -128,7 +124,6 @@ app.post("/demo", function(req, res) {
     if(req.body.result.metadata.intentName == "ViewRequests") {
       var requestCards = JSONObject.requestCard;
       for (var i = 0; i < requestCards.length; i++) {
-        for (var j = 0; j < requestCards[i].length; j++) {
           return res.json({
               
             "speech": "View Submitted Id card",
@@ -146,10 +141,10 @@ app.post("/demo", function(req, res) {
                             {
                               "basicCard": {
                                 "title": "Identity Card",
-                                "formattedText": "**Name** : " + requestCards.idRequest.name[j] + 
-                                " \n**Phone Number** : " + requestCards[i].idRequest[j].number + 
-                                " \n**Email ID** : " + requestCards[i].idRequest[j].email + 
-                                " \n**Designation** : " + requestCards[i].idRequest[j].designation
+                                "formattedText": "**Name** : " + requestCards[i].name + 
+                                " \n**Phone Number** : " + requestCards[i].number + 
+                                " \n**Email ID** : " + requestCards[i].email + 
+                                " \n**Designation** : " + requestCards[i].designation
                               }
                             }
                         ]
@@ -170,7 +165,6 @@ app.post("/demo", function(req, res) {
 
           });
         }
-      }
     }
   });
       
