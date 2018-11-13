@@ -71,15 +71,15 @@ app.post("/demo", function(req, res) {
         source: "agent"
         });
       }
-      requestCard.push(req.body.contexts.parameters.any);
+      requestCard[0].push(req.body.contexts.parameters.any);
     //console.log(" the name - " +requestCard.idRequest.name);
-      requestCard.push(req.body.result.parameters.email);
+      requestCard[1].push(req.body.result.parameters.email);
       //console.log(" the email - " +requestCard.email);
             
-      requestCard.push(req.body.result.parameters.number);
+      requestCard[2].push(req.body.result.parameters.number);
       //console.log(" the phone number - " +requestCard.number);
 
-      requestCard.push(req.body.result.parameters.Designation);
+      requestCard[3].push(req.body.result.parameters.Designation);
       //console.log(" the designation - " +requestCard.designation);
       return res.json({
         "speech": "Id Card request Submitted successfully !!",
