@@ -77,17 +77,17 @@ app.post("/demo", function(req, res) {
         source: "agent"
         });
       }     
-        requestCard.idRequest.email.push(req.body.result.parameters.email);
-        console.log(" the email - " +requestCard.idRequest.email);
+      requestCard.idRequest.email.push(req.body.result.parameters.email);
+      console.log(" the email - " +requestCard.idRequest.email);
             
-        requestCard.idRequest.number.push(req.body.result.parameters.number);
-        console.log(" the phone number - " +requestCard.idRequest.number);
+      requestCard.idRequest.number.push(req.body.result.parameters.number);
+      console.log(" the phone number - " +requestCard.idRequest.number);
 
-        requestCard.idRequest.designation.push(req.body.result.parameters.Designation);
-        console.log(" the designation - " +requestCard.idRequest.designation);
-        return res.json({
-          "speech": "Id Card request Submitted successfully !!",
-          "displayText": "Requested updated",
+      requestCard.idRequest.designation.push(req.body.result.parameters.Designation);
+      console.log(" the designation - " +requestCard.idRequest.designation);
+      return res.json({
+        "speech": "Id Card request Submitted successfully !!",
+        "displayText": "Requested updated",
 
           "data":{
               "google": {
@@ -120,22 +120,54 @@ app.post("/demo", function(req, res) {
                 "lifespan": 99,
                 "parameters": {
                   "data": "{}"
+              }
+            }
+          ]
+        });
+      }
+    if(req.body.result.metadata.intentName == "ViewRequests") {
+      for (i in requestCard) {
+        return res.json({
+            
+          "speech": "View Submitted Id card",
+          "displayText": "View Submitted Id card",
+          "data":{
+              "google": {
+                  "expectedUserResponse":true,
+                  "richResponse" : {
+                      "items" : [
+                          {
+                              "simpleResponse" : {
+                                  "textToSpeech": "Submitted ID Card Request are :"
+                              }
+                          },
+                          {
+                            "basicCard": {
+                              "title": "Identity Card",
+                              "formattedText": "**Name** : " + requestCard.idRequest.name[i] + 
+                              " \n**Phone Number** : " + requestCard.idRequest.number[i] + 
+                              " \n**Email ID** : " + requestCard.idRequest.email[i] + 
+                              " \n**Designation** : " + requestCard.idRequest.designation[i]
+                            }
+                          }
+                      ]
+                  }
+                 
+              }
+
+          },
+          "contextOut": [
+              {
+                "name": "_actions_on_google",
+                "lifespan": 99,
+                "parameters": {
+                  "data": "{}"
                 }
               }
             ]
-          });
-      }
-      
-      /*requestCard.push([req.body.result.parameters.any, req.body.result.parameters.email,
-        req.body.result.parameters.number, req.body.result.parameters.Designation]);*/
-      if(req.body.result.metadata.intentName == "ViewRequests") {
-        requestCard.id.forEach(function(i) {
-          return res.json({
-            speech: i,
-            displayText: i,
-            source: "agent"
-          });
+
         });
       }
+    }
   });
       
