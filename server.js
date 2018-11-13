@@ -126,8 +126,9 @@ app.post("/demo", function(req, res) {
         });
       }
     if(req.body.result.metadata.intentName == "ViewRequests") {
-      for (var i = 0; i <= requestCard.length; i++) {
-        for (var j = 0; j <= requestCard[i].length; j++) {
+      var requestCard = JSONObject.requestCard.idRequest;
+      for (var i = 0; i < requestCard.length; i++) {
+        for (var j = 0; j < requestCard[i].length; j++) {
           return res.json({
               
             "speech": "View Submitted Id card",
