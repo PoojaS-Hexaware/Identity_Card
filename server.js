@@ -126,9 +126,9 @@ app.post("/demo", function(req, res) {
         });
       }
     if(req.body.result.metadata.intentName == "ViewRequests") {
-      var requestCard = JSONObject.requestCard.idRequest;
-      for (var i = 0; i < requestCard.length; i++) {
-        for (var j = 0; j < requestCard[i].length; j++) {
+      var requestCards = JSONObject.requestCard.idRequest;
+      for (var i = 0; i < requestCards.length; i++) {
+        for (var j = 0; j < requestCards[i].length; j++) {
           return res.json({
               
             "speech": "View Submitted Id card",
@@ -146,10 +146,10 @@ app.post("/demo", function(req, res) {
                             {
                               "basicCard": {
                                 "title": "Identity Card",
-                                "formattedText": "**Name** : " + requestCard[i].idRequest[j].name + 
-                                " \n**Phone Number** : " + requestCard[i].idRequest[j].number + 
-                                " \n**Email ID** : " + requestCard[i].idRequest[j].email + 
-                                " \n**Designation** : " + requestCard[i].idRequest[j].designation
+                                "formattedText": "**Name** : " + requestCards[i].idRequest[j].name + 
+                                " \n**Phone Number** : " + requestCards[i].idRequest[j].number + 
+                                " \n**Email ID** : " + requestCards[i].idRequest[j].email + 
+                                " \n**Designation** : " + requestCards[i].idRequest[j].designation
                               }
                             }
                         ]
