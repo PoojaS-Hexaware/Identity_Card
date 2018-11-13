@@ -98,10 +98,10 @@ app.post("/demo", function(req, res) {
                           {
                             "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + requestCard[0] + 
-                              " \n**Phone Number** : " + requestCard[1] + 
-                              " \n**Email ID** : " + requestCard[2] + 
-                              " \n**Designation** : " + requestCard[3]
+                              "formattedText": "**Name** : " + req.body.contexts.parameters.any + 
+                              " \n**Phone Number** : " + req.body.result.parameters.email + 
+                              " \n**Email ID** : " + req.body.result.parameters.number + 
+                              " \n**Designation** : " + req.body.result.parameters.Designation
                             }
                           }
                       ]
