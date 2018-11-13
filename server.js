@@ -43,7 +43,7 @@ app.post("/demo", function(req, res) {
         source: "agent"
       });
     }
-    requestCard.push(req.body.result.parameters.any);
+    requestCard[name].push(req.body.result.parameters.any);
     //console.log(" the name - " +requestCard.idRequest.name);
     if (!req.body.result.parameters.email) {
       return res.json({
@@ -73,13 +73,13 @@ app.post("/demo", function(req, res) {
         source: "agent"
         });
       }     
-      requestCard.push(req.body.result.parameters.email);
+      requestCard[email].push(req.body.result.parameters.email);
       //console.log(" the email - " +requestCard.email);
             
-      requestCard.push(req.body.result.parameters.number);
+      requestCard[number].push(req.body.result.parameters.number);
       //console.log(" the phone number - " +requestCard.number);
 
-      requestCard.push(req.body.result.parameters.Designation);
+      requestCard[designation].push(req.body.result.parameters.Designation);
       //console.log(" the designation - " +requestCard.designation);
       return res.json({
         "speech": "Id Card request Submitted successfully !!",
@@ -98,10 +98,10 @@ app.post("/demo", function(req, res) {
                           {
                             "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + requestCard.name + 
-                              " \n**Phone Number** : " + requestCard.number + 
-                              " \n**Email ID** : " + requestCard.email + 
-                              " \n**Designation** : " + requestCard.designation
+                              "formattedText": "**Name** : " + requestCard[name] + 
+                              " \n**Phone Number** : " + requestCard[number] + 
+                              " \n**Email ID** : " + requestCard[email] + 
+                              " \n**Designation** : " + requestCard[designation]
                             }
                           }
                       ]
