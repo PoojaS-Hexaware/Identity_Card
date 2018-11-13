@@ -60,7 +60,13 @@ app.post("/demo", function(req, res) {
       //console.log(" the designation - " +requestCard.designation);
   }
     if (req.body.result.metadata.intentName == "Create IdCard - custom") {
-      if (!req.body.result.parameters.number) {
+      if (!req.body.result.parameters.email) {
+        return res.json({
+          speech: "Give your email Id",
+          displayText: "Give your email Id", 
+          source: "agent"
+        });
+      } else if (!req.body.result.parameters.number) {
         return res.json({
           speech: "Give your number",
           displayText: "Give your number", 
@@ -74,8 +80,8 @@ app.post("/demo", function(req, res) {
         });
       } else {
         return res.json({
-        "speech": "Id Card request Submitted successfully !!",
-        "displayText": "Requested updated",
+        speech: "Id Card request Submitted successfully !!",
+        displayText: "Requested updated",
 
           "data":{
               "google": {
@@ -91,9 +97,7 @@ app.post("/demo", function(req, res) {
                             "basicCard": 
                             {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + req.body.contexts.parameters.any + 
-                              " \n**Phone Number** : " + req.body.result.parameters.number + 
-                              " \n**Email ID** : " + req.body.result.parameters.email + 
+                              "formattedText": "**Name** : " + req.body.contexts.parameters.any + " \n**Phone Number** : " + req.body.result.parameters.number + " \n**Email ID** : " + req.body.result.parameters.email + 
                               " \n**Designation** : " + req.body.result.parameters.Designation,
                               "buttons" : []
                             }
