@@ -4,12 +4,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
-global.requestCard = [ {
+global.requestCard = {
           'name' : null,
           'email': null,
           'number': null,
           'designation': null            
-}]
+}
 /*global.speech = {
   name:null,
   email:null,
@@ -71,15 +71,15 @@ app.post("/demo", function(req, res) {
         source: "agent"
         });
       }
-      requestCard['name'].push(req.body.contexts.parameters.any);
+      requestCard.push(req.body.contexts.parameters.any);
     //console.log(" the name - " +requestCard.idRequest.name);
-      requestCard['email'].push(req.body.result.parameters.email);
+      requestCard.push(req.body.result.parameters.email);
       //console.log(" the email - " +requestCard.email);
             
-      requestCard['number'].push(req.body.result.parameters.number);
+      requestCard.push(req.body.result.parameters.number);
       //console.log(" the phone number - " +requestCard.number);
 
-      requestCard['designation'].push(req.body.result.parameters.Designation);
+      requestCard.push(req.body.result.parameters.Designation);
       //console.log(" the designation - " +requestCard.designation);
       return res.json({
         "speech": "Id Card request Submitted successfully !!",
