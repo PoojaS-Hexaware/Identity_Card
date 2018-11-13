@@ -42,16 +42,14 @@ app.post("/demo", function(req, res) {
         displayText: "Give your name", 
         source: "agent"
       });
-    }
-    requestCard['name'].push(req.body.result.parameters.any);
-    //console.log(" the name - " +requestCard.idRequest.name);
-    if (!req.body.result.parameters.email) {
+    } else if (!req.body.result.parameters.email) {
       return res.json({
         speech: "Give your email Id",
         displayText: "Give your email Id", 
         source: "agent"
       });
     }
+    
   }
     if (req.body.result.metadata.intentName == "Create IdCard - custom") {
       if (!req.body.result.parameters.email) {
@@ -72,7 +70,9 @@ app.post("/demo", function(req, res) {
         displayText: "Give your Designation" , 
         source: "agent"
         });
-      }     
+      }
+      requestCard['name'].push(req.body.contexts.parameters.any);
+    //console.log(" the name - " +requestCard.idRequest.name);
       requestCard['email'].push(req.body.result.parameters.email);
       //console.log(" the email - " +requestCard.email);
             
