@@ -88,12 +88,13 @@ app.post("/demo", function(req, res) {
                               }
                           },
                           {
-                            "basicCard": {
+                            "basicCard": 
+                            {
                               "title": "Identity Card",
                               "formattedText": "**Name** : " + req.body.contexts.parameters.any + 
                               " \n**Phone Number** : " + req.body.result.parameters.email + 
                               " \n**Email ID** : " + req.body.result.parameters.number + 
-                              " \n**Designation** : " + req.body.result.parameters.Designation
+                              " \n**Designation** : " + req.body.result.parameters.Designation,
                             }
                           }
                       ]
@@ -114,6 +115,7 @@ app.post("/demo", function(req, res) {
         });
       }
     }
+    /*
     if(req.body.result.metadata.intentName == "ViewRequests") {
       var requestCards = JSONObject.requestCard;
       for (var i = 0; i < requestCards.length; i++) {
@@ -158,6 +160,6 @@ app.post("/demo", function(req, res) {
 
           });
         }
-    }
+    }*/
   });
       
