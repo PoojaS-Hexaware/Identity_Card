@@ -127,7 +127,7 @@ app.post("/demo", function(req, res) {
       }
     if(req.body.result.metadata.intentName == "ViewRequests") {
       for (var i = 0; i <= requestCard.length; i++) {
-        for (var j = 0; j <= requestCard.idRequest[i].length; j++) {
+        for (var j = 0; j <= requestCard[i].length; j++) {
           return res.json({
               
             "speech": "View Submitted Id card",
@@ -145,10 +145,10 @@ app.post("/demo", function(req, res) {
                             {
                               "basicCard": {
                                 "title": "Identity Card",
-                                "formattedText": "**Name** : " + requestCard.idRequest[i].name[j] + 
-                                " \n**Phone Number** : " + requestCard.idRequest[i].number[j] + 
-                                " \n**Email ID** : " + requestCard.idRequest[i].email[j] + 
-                                " \n**Designation** : " + requestCard.idRequest[i].designation[j]
+                                "formattedText": "**Name** : " + requestCard[i].idRequest[j].name + 
+                                " \n**Phone Number** : " + requestCard[i].idRequest[j].number + 
+                                " \n**Email ID** : " + requestCard[i].idRequest[j].email + 
+                                " \n**Designation** : " + requestCard[i].idRequest[j].designation
                               }
                             }
                         ]
