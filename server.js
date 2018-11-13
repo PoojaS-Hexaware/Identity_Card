@@ -4,12 +4,16 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
-var requestCard = [ 
-  name = null,
-  email  = null,
-  number = null,
-  Designation = null
-];
+var requestCard ={
+    
+  "id": 
+      {
+          "name":[],
+          "email":[],
+          "number":[],
+          "designation":[]          
+      }   
+};
 /*global.speech = {
   name:null,
   email:null,
@@ -112,9 +116,19 @@ app.post("/demo", function(req, res) {
           });
         }
       }
-      requestCard.push([req.body.result.parameters.any, req.body.result.parameters.email,
-        req.body.result.parameters.number, req.body.result.parameters.Designation]);
-      app.get('/demo',function (req,res) {
+      requestCard.id.name.push(req.body.result.parameters.any);
+      console.log(" the name - " +requestCard.id.name);
+
+      requestCard.id.email.push(req.body.result.parameters.email);
+      console.log(" the name - " +requestCard.id.email);
+
+      requestCard.id.number.push(req.body.result.parameters.number);
+      console.log(" the name - " +requestCard.id.number);
+
+      requestCard.id.designation.push(req.body.result.parameters.designation);
+      console.log(" the name - " +requestCard.id.designation);
+      /*requestCard.push([req.body.result.parameters.any, req.body.result.parameters.email,
+        req.body.result.parameters.number, req.body.result.parameters.Designation]);*/
       if(req.body.result.metadata.intentName == "ViewRequests") {
         requestCard.forEach(function(i) {
           return res.json({
@@ -125,6 +139,5 @@ app.post("/demo", function(req, res) {
         });
         console.log(i);
       }
-     });
   });
       
