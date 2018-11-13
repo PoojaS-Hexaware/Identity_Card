@@ -117,7 +117,8 @@ app.post("/demo", function(req, res) {
       app.get('/demo',function (req,res ) {
       if(req.body.result.metadata.intentName == "ViewRequests") {
         for (var i in requestCard) {
-        res.send(i);
+          console.log(i);
+          return res.send(i);
         }
       }
      });
