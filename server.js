@@ -83,7 +83,7 @@ app.post("/demo", function(req, res) {
         requestCard.idRequest.number.push(req.body.result.parameters.number);
         console.log(" the phone number - " +requestCard.idRequest.number);
 
-        requestCard.idRequest.designation.push(req.body.result.parameters.designation);
+        requestCard.idRequest.designation.push(req.body.result.parameters.Designation);
         console.log(" the designation - " +requestCard.idRequest.designation);
         return res.json({
           "speech": "Id Card request Submitted successfully !!",
