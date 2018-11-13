@@ -78,7 +78,7 @@ app.post("/demo", function(req, res) {
         displayText: "Give your Designation" , 
         source: "agent"
         });
-      } else {      
+      }     
           
         requestCard.idRequest.number.push(req.body.result.parameters.number);
         console.log(" the phone number - " +requestCard.idRequest.number);
@@ -125,7 +125,6 @@ app.post("/demo", function(req, res) {
               }
             ]
           });
-        }
       }
       
       /*requestCard.push([req.body.result.parameters.any, req.body.result.parameters.email,
