@@ -92,9 +92,10 @@ app.post("/demo", function(req, res) {
                             {
                               "title": "Identity Card",
                               "formattedText": "**Name** : " + req.body.contexts.parameters.any + 
-                              " \n**Phone Number** : " + req.body.result.parameters.email + 
-                              " \n**Email ID** : " + req.body.result.parameters.number + 
+                              " \n**Phone Number** : " + req.body.result.parameters.number + 
+                              " \n**Email ID** : " + req.body.result.parameters.email + 
                               " \n**Designation** : " + req.body.result.parameters.Designation,
+                              "buttons" : []
                             }
                           }
                       ]
