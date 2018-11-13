@@ -4,12 +4,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
-global.requestCard = {
+var requestCard = {
           'name' : null,
           'email': null,
           'number': null,
           'designation': null            
-}
+};
 /*global.speech = {
   name:null,
   email:null,
@@ -98,10 +98,10 @@ app.post("/demo", function(req, res) {
                           {
                             "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + requestCard['name'] + 
-                              " \n**Phone Number** : " + requestCard['number'] + 
-                              " \n**Email ID** : " + requestCard['email'] + 
-                              " \n**Designation** : " + requestCard['designation']
+                              "formattedText": "**Name** : " + requestCard[0] + 
+                              " \n**Phone Number** : " + requestCard[1] + 
+                              " \n**Email ID** : " + requestCard[2] + 
+                              " \n**Designation** : " + requestCard[3]
                             }
                           }
                       ]
