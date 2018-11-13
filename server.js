@@ -75,20 +75,18 @@ app.post("/demo", function(req, res) {
         source: "agent"
         });
       } else {
-        requestCard.id.name.push(req.body.result.parameters.any);
+        requestCard.id.name.push(req.body.result.contexts.any);
         console.log(" the name - " +requestCard.id.name);
 
         requestCard.id.email.push(req.body.result.parameters.email);
-        console.log(" the name - " +requestCard.id.email);
+        console.log(" the email - " +requestCard.id.email);
 
         requestCard.id.number.push(req.body.result.parameters.number);
-        console.log(" the name - " +requestCard.id.number);
+        console.log(" the phone number - " +requestCard.id.number);
 
         requestCard.id.designation.push(req.body.result.parameters.designation);
-        console.log(" the name - " +requestCard.id.designation);
+        console.log(" the designation - " +requestCard.id.designation);
         return res.json({
-          
-
           "speech": "Id Card request Submitted successfully !!",
           "displayText": "Requested updated",
 
@@ -105,7 +103,7 @@ app.post("/demo", function(req, res) {
                           {
                             "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + requestCard.id.name[requestCard.id.name.length-1] + 
+                              "formattedText": "**Name** : " + requestCard.id.name[requestCard.id.name.length - 1] + 
                               " \n**Phone Number** : " + req.body.result.parameters.number + 
                               " \n**Email ID** : " + req.body.result.parameters.email + 
                               " \n**Designation** : " + req.body.result.parameters.Designation,
