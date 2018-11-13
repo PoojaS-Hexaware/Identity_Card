@@ -4,13 +4,13 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
-var requestCard = {
+/*var requestCard = {
           'name' : null,
           'email': null,
           'number': null,
           'designation': null            
 };
-/*global.speech = {
+global.speech = {
   name:null,
   email:null,
   number:null,
@@ -85,7 +85,7 @@ app.post("/demo", function(req, res) {
         "speech": "Id Card request Submitted successfully !!",
         "displayText": "Requested updated",
 
-          "data":{
+          "data": {
               "google": {
                   "expectedUserResponse":true,
                   "richResponse" : {
@@ -96,10 +96,12 @@ app.post("/demo", function(req, res) {
                               }
                           },
                           {
-                            "basicCard": 
-                            {
+                            "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + req.body.contexts.parameters.any + " \n**Phone Number** : " + req.body.result.parameters.number + " \n**Email ID** : " + req.body.result.parameters.email + " \n**Designation** : " + req.body.result.parameters.Designation,
+                              "formattedText": "**Name** : " + req.body.contexts.parameters.any +
+                               " \n**Phone Number** : " + req.body.result.parameters.number +
+                                " \n**Email ID** : " + req.body.result.parameters.email +
+                                 " \n**Designation** : " + req.body.result.parameters.Designation,
                               "buttons" : []
                             }
                           }
@@ -120,7 +122,7 @@ app.post("/demo", function(req, res) {
           ]
         });
       }
-    }
+    }   
     /*
     if(req.body.result.metadata.intentName == "ViewRequests") {
       var requestCards = JSONObject.requestCard;
