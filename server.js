@@ -126,7 +126,7 @@ app.post("/demo", function(req, res) {
         });
       }
     if(req.body.result.metadata.intentName == "ViewRequests") {
-      var requestCards = JSONObject.requestCard.idRequest;
+      var requestCards = JSONObject.requestCard;
       for (var i = 0; i < requestCards.length; i++) {
         for (var j = 0; j < requestCards[i].length; j++) {
           return res.json({
