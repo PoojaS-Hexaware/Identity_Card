@@ -109,10 +109,11 @@ app.post("/demo", function(req, res) {
   }
   if(req.body.result.metadata.intentName == "ViewRequests") {
     //var requestCards = JSONObject.requestCard;
-    for (var i in requestCard) {
+    //for (var i in requestCard) {
+    for (var i = 0; i < requestCard.length; i++) {     
       var item = requestCard[i];
+      console.log(item);
     
-    //for (var i = 0; i < requestCard.length; i++) {
       return res.json({
             
           "speech": "View Submitted Id card",
