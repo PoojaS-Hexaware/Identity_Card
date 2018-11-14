@@ -117,7 +117,18 @@ app.post("/demo", function(req, res) {
         source : "agent"
       });
     } else if (requestCard.length == 1) {
-
+      req.body.result.contexts.forEach(function(context){
+        if(context.name == 'createidcard-followup'){
+          RequestedName = context.parameters.any;
+        }  
+      })
+      var id = {
+      'name'  : RequestedName,
+      'email' : req.body.result.parameters.email,
+      'number' : req.body.result.parameters.number,
+      'designation' : req.body.result.parameters.Designation,
+      }
+      requestCard.push(id);
       return res.json({
 
         "speech": "Id Card request Submitted successfully !!",
@@ -136,10 +147,10 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + requestCard.name +
-                                " \n**Phone Number** : " + requestCard.number +
-                                " \n**Email ID** : " + requestCard.email +
-                                " \n**Designation** : " + requestCard.designation,
+                              "formattedText": "**Name** : " + id.name +
+                                " \n**Phone Number** : " + id.number +
+                                " \n**Email ID** : " + id.email +
+                                " \n**Designation** : " + id.designation,
                               "buttons" : []
                           }
                         }
