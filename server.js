@@ -120,13 +120,16 @@ app.post("/demo", function(req, res) {
       req.body.result.contexts.forEach(function(context){
         if(context.name == 'createidcard-followup'){
           RequestedName = context.parameters.any;
+          Email = context.parameters.email;
+          Num = context.parameters.number;
+          Desg = context.parameters.Designation;
         }  
       })
       var id = {
       'name'  : RequestedName,
-      'email' : req.body.result.parameters.email,
-      'number' : req.body.result.parameters.number,
-      'designation' : req.body.result.parameters.Designation,
+      'email' : Email,
+      'number' : Num,
+      'designation' : Desg,
       }
       requestCard.push(id);
       return res.json({
