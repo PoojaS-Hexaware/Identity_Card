@@ -188,35 +188,36 @@ app.post("/demo", function(req, res) {
           "description": "Designation : " + requestCard[i].designation,
         })
       }
-      return res.json ({
-          "conversationToken": "",
-          "expectUserResponse": true,
-          "expectedInputs": [
-              {
-                  "inputPrompt": {
-                      "initialPrompts": [
-                          {
-                              "textToSpeech": "Here are list of Id Card request Submitted !!" +
-                                "\n Choose any one to view detailed information."
-                          }
-                      ],
-                      "noInputPrompts": []
-                  },
-                  "possibleIntents": [
-                      {
-                          "intent": "actions.intent.OPTION",
-                          "inputValueData": {
-                              "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                              "listSelect": {
-                                  "title": "List of all Id Card Requested",
-                                  "items": itemValues
-                              }
-                          }
-                      }
-                  ]
+      return res.json({
+            
+        "speech": "Id Card Requested",
+        "displayText": "",
+        "data": {
+            "google": {
+              "expectUserResponse": true,
+              "richResponse": {
+                "items": [
+                  {
+                    "simpleResponse": {
+                      "textToSpeech": "Following are the list of Id Card request submitted!! " 
+                      + "Choose one for detailed information."
+                    }
+                  }
+                ]
+              },
+              "systemIntent": {
+                "intent": "actions.intent.OPTION",
+                "data": {
+                  "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                  "listSelect": {
+                    "title": "List of all the Id Card Request Submitted",
+                    "items": itemValues
+                  }
+                }
               }
-          ]
-      });
+            }
+          }
+        });
     }
   }
 });
