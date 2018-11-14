@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
-/*var requestCard = {}*/
+var requestCard = [];
+
 
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -14,12 +15,6 @@ app.get('/', function (req, res) {
 app.listen(port, function () {
  console.log(`Example app listening on port !`);
 });
-/*global.speech =
-      req.body.result &&
-      req.body.result.parameters &&
-      req.body.result.parameters.any
-        ? req.body.result.parameters.any
-        : "Seems like some problem. Speak again.";*/
 
 app.post("/demo", function(req, res) {
   if (req.body.result.metadata.intentName == "CreateIdCard") {
@@ -36,15 +31,6 @@ app.post("/demo", function(req, res) {
         source: "agent"
       });
     }
-    //requestCard[0].push(req.body.result.parameters.any);
-    //console.log(" the name - " +requestCard.idRequest.name);
-    //requestCard[1].push(req.body.result.parameters.email);
-      //console.log(" the email - " +requestCard.email);
-            //requestCard[2].push(req.body.result.parameters.number);
-      //console.log(" the phone number - " +requestCard.number);
-
-      //requestCard[3].push(req.body.result.parameters.Designation);
-      //console.log(" the designation - " +requestCard.designation);
   }
   if (req.body.result.metadata.intentName == "Create IdCard - custom") {
     if (!req.body.result.parameters.email) {
@@ -85,7 +71,7 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + req.body.contexts.any +
+                              "formattedText": "**Name** : " + req.body.result.contexts.parameters.any +
                                 " \n**Phone Number** : " + req.body.result.parameters.number +
                                 " \n**Email ID** : " + req.body.result.parameters.email +
                                 " \n**Designation** : " + req.body.result.parameters.Designation,
@@ -108,6 +94,7 @@ app.post("/demo", function(req, res) {
       });
     }
   }
+  
 
 /*
     if(req.body.result.metadata.intentName == "ViewRequests") {
