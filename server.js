@@ -127,10 +127,10 @@ app.post("/demo", function(req, res) {
                           {
                             "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + requestCard[i].name + 
-                              " \n**Phone Number** : " + requestCard[i].number + 
-                              " \n**Email ID** : " + requestCard[i].email + 
-                              " \n**Designation** : " + requestCard[i].designation
+                              "formattedText": "**Name** : " + requestCard[i].id.name + 
+                              " \n**Phone Number** : " + requestCard[i].id.number + 
+                              " \n**Email ID** : " + requestCard[i].id.email + 
+                              " \n**Designation** : " + requestCard[i].id.designation
                             }
                           }
                       ]
