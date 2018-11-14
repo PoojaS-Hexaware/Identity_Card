@@ -110,51 +110,100 @@ app.post("/demo", function(req, res) {
   if(req.body.result.metadata.intentName == "ViewRequests") {
     //var requestCards = JSONObject.requestCard;
     //for (var i in requestCard) {
-    for (var i = 0; i < requestCard.length; i++) {     
-      var item = requestCard[i];
-      console.log(item);
-    
+    if (requestCard.length == 0) {
       return res.json({
-            
-          "speech": "View Submitted Id card",
-          "displayText": "View Submitted Id card",
-          "data":{
-              "google": {
-                  "expectedUserResponse":true,
+        speech : "No Id card request submitted !!",
+        displayText : "No id card request",
+        source : "agent"
+      });
+    } else if (requestCard.length == 1) {
+
+      return res.json({
+
+        "speech": "Id Card request Submitted successfully !!",
+        "displayText": "Requested updated",
+
+        "data": {
+            "google": {
+              "expectedUserResponse":true,
                   "richResponse" : {
                       "items" : [
-                          {
-                              "simpleResponse" : {
-                                  "textToSpeech": "Submitted ID Card Request are :"
-                              }
-                          },
-                          {
-                            "basicCard": {
-                              "title": "Identity Card",
-                              "formattedText": "**Name** : " + item.name + 
-                              " \n**Phone Number** : " + item.number + 
-                              " \n**Email ID** : " + item.email + 
-                              " \n**Designation** : " + item.designation
+                        {
+                          "simpleResponse" : {
+                              "textToSpeech": "Id card request submitted!!"
                             }
+                        },
+                        {
+                          "basicCard": {
+                              "title": "Identity Card",
+                              "formattedText": "**Name** : " + id.name +
+                                " \n**Phone Number** : " + id.number +
+                                " \n**Email ID** : " + id.email +
+                                " \n**Designation** : " + id.designation,
+                              "buttons" : []
                           }
+                        }
                       ]
+                    }
                   }
-                
-              }
-
+                },                 
+        "contextOut": [
+          {
+            "name": "_actions_on_google",
+            "lifespan": 99,
+            "parameters": {
+            "data": "{}"
+            }
+          }
+        ]
+      });
+    } else {
+      for (var i = 0; i < requestCard.length; i++) {     
+        var itemValues = [];
+        //item.push(requestCard[i]);
+        itemValues.push({
+          "optionInfo": {
+              "key": "PhoneNumber :"  + requestCard[i].number,
+              "synonyms": [
+                  "View Card",
+                  "All card requested",
+                  "View list of card requested"
+              ]
           },
-          "contextOut": [
-              {
-                "name": "_actions_on_google",
-                "lifespan": 99,
-                "parameters": {
-                  "data": "{}"
-                }
-              }
-            ]
-
-        });
+          "title": "Submitted request of :" + requestCard[i].name,
+          "description": "Designation : " + requestCard[i].designation,
+        })
       }
+      return res.json ({
+          "conversationToken": "",
+          "expectUserResponse": true,
+          "expectedInputs": [
+              {
+                  "inputPrompt": {
+                      "initialPrompts": [
+                          {
+                              "textToSpeech": "Here are list of Id Card request Submitted !!" +
+                                "\n Choose any one to view detailed information."
+                          }
+                      ],
+                      "noInputPrompts": []
+                  },
+                  "possibleIntents": [
+                      {
+                          "intent": "actions.intent.OPTION",
+                          "inputValueData": {
+                              "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                              "listSelect": {
+                                  "title": "List of all Id Card Requested",
+                                  "items": itemValues
+                              }
+                          }
+                      }
+                  ]
+              }
+          ]
+      });
+    }
   }
 });
       
