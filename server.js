@@ -172,7 +172,7 @@ app.post("/demo", function(req, res) {
         ]
       });
     } else {
-      var itemValues = [];
+      var itemValues = []
       for (var i = 0; i < requestCard.length; i++) {     
         //item.push(requestCard[i]);
         itemValues.push({
