@@ -57,6 +57,14 @@ app.post("/demo", function(req, res) {
             RequestedName = context.parameters.any;
           }  
       })
+      var id = {
+        'name'  : RequestedName,
+        'email' : req.body.result.parameters.email,
+        'number' : req.body.result.parameters.number,
+        'designation' : req.body.result.parameters.Designation,
+      }
+      requestCard.push(id);
+      console.log(id);
       return res.json({
 
           
@@ -76,10 +84,10 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + RequestedName +
-                                " \n**Phone Number** : " + req.body.result.parameters.number +
-                                " \n**Email ID** : " + req.body.result.parameters.email +
-                                " \n**Designation** : " + req.body.result.parameters.Designation,
+                              "formattedText": "**Name** : " + id.name +
+                                " \n**Phone Number** : " + id.number +
+                                " \n**Email ID** : " + id.email +
+                                " \n**Designation** : " + id.designation,
                               "buttons" : []
                           }
                         }
