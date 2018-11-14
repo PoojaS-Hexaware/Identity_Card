@@ -85,7 +85,7 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + req.body.result.parameters.any +
+                              "formattedText": "**Name** : " + req.body.contexts.parameters.any +
                                 " \n**Phone Number** : " + req.body.result.parameters.number +
                                 " \n**Email ID** : " + req.body.result.parameters.email +
                                 " \n**Designation** : " + req.body.result.parameters.Designation,
