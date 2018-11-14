@@ -112,9 +112,31 @@ app.post("/demo", function(req, res) {
     //for (var i in requestCard) {
     if (requestCard.length == 0) {
       return res.json({
-        speech : "No Id card request submitted !!",
-        displayText : "No id card request",
-        source : "agent"
+        "speech": "Id Card request Submitted successfully !!",
+        "displayText": "Requested updated",
+
+        "data": {
+            "google": {
+              "expectedUserResponse":true,
+                  "richResponse" : {
+                      "items" : [
+                        {
+                          "simpleResponse" : {
+                              "textToSpeech": "list of id card requested"
+                            }
+                        }
+                      ],
+                      "suggestions": [
+                        {
+                            "title": "create Id Card"
+                        },
+                        {
+                            "title": "exit"
+                        }
+                      ]
+                    }
+                  }
+                }
       });
     } else if (requestCard.length == 1) {
       req.body.result.contexts.forEach(function(context){
@@ -156,6 +178,14 @@ app.post("/demo", function(req, res) {
                                 " \n**Designation** : " + id.designation,
                               "buttons" : []
                           }
+                        }
+                      ],
+                      "suggestions": [
+                        {
+                            "title": "create Id Card"
+                        },
+                        {
+                            "title": "exit"
                         }
                       ]
                     }
