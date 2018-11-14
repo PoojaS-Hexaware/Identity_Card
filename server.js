@@ -144,7 +144,7 @@ app.post("/demo", function(req, res) {
                       "items" : [
                         {
                           "simpleResponse" : {
-                              "textToSpeech": "Id card request submitted!!"
+                              "textToSpeech": "list of id card requested"
                             }
                         },
                         {
@@ -172,8 +172,8 @@ app.post("/demo", function(req, res) {
         ]
       });
     } else {
+      var itemValues = [];
       for (var i = 0; i < requestCard.length; i++) {     
-        var itemValues = [];
         //item.push(requestCard[i]);
         itemValues.push({
           "optionInfo": {
