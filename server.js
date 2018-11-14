@@ -91,6 +91,17 @@ app.post("/demo", function(req, res) {
                               "buttons" : []
                           }
                         }
+                      ],
+                      "suggestions": [
+                        {
+                            "title": "create Id Card"
+                        },
+                        {
+                            "title": "view submitted request"
+                        },
+                        {
+                          "title" : "exit"
+                        }
                       ]
                     }
                   }
@@ -122,7 +133,7 @@ app.post("/demo", function(req, res) {
                       "items" : [
                         {
                           "simpleResponse" : {
-                              "textToSpeech": "list of id card requested"
+                              "textToSpeech": "Sorry No request submitted !!" 
                             }
                         }
                       ],
