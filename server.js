@@ -212,9 +212,9 @@ app.post("/demo", function(req, res) {
                           "basicCard": {
                               "title": "Identity Card",
                               "formattedText": "**Name** :  " + id.name +
-                                " \n**Phone Number** :  " + id.number +
-                                " \n**Email ID** :  " + id.email +
-                                " \n**Designation** :  " + id.designation,
+                                "\t\n**Phone Number** :  " + id.number +
+                                "\t\n**Email ID** :  " + id.email +
+                                "\t\n**Designation** :  " + id.designation,
                               "buttons" : []
                           }
                         }
