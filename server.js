@@ -112,9 +112,10 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : "+ id.name +"  \n" + "**Phone Number** : "+ id.number +
-                                "  \n" + "**Email ID** : "+ id.email +
-                                "  \n" + "**Designation** : "+ id.designation,
+                              "formattedText": "**Name** : "+ id.name +
+                              "  \n" + "**Phone Number** : "+ id.number +
+                              "  \n" + "**Email ID** : "+ id.email +
+                              "  \n" + "**Designation** : "+ id.designation,
                               "buttons" : []
                           }
                         }
@@ -210,9 +211,9 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + id.name + "\n  " +
-                                "**Phone Number** : " + id.number +"\n  " +
-                                "**Email ID** : " + id.email + "\n  " +
+                              "formattedText": "**Name** : " + id.name + "  \n" +
+                                "**Phone Number** : " + id.number +"  \n" +
+                                "**Email ID** : " + id.email + "  \n" +
                                 "**Designation** : " + id.designation,
                               "buttons" : []
                           }
