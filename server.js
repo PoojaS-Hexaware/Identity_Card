@@ -33,13 +33,7 @@ app.post("/demo", function(req, res) {
     }
   }
   if (req.body.result.metadata.intentName == "Create IdCard - custom") {
-    if (!req.body.result.parameters.email) {
-      return res.json({
-        speech: "Give your email Id",
-        displayText: "Give your email Id", 
-        source: "agent"
-      });
-    } else if (!req.body.result.parameters.number) {
+    if (!req.body.result.parameters.number) {
       return res.json({
         speech: "Give your number",
         displayText: "Give your number", 
@@ -47,9 +41,43 @@ app.post("/demo", function(req, res) {
       });
     } else if (!req.body.result.parameters.Designation) {
       return res.json({
-        speech: "Give your Designation" ,
-        displayText: "Give your Designation" , 
-        source: "agent"
+        "speech": "Give Your Designation",
+        "displayText": "Give Your Designation",
+
+        "data": {
+            "google": {
+              "expectedUserResponse":true,
+                  "richResponse" : {
+                      "items" : [
+                        {
+                          "simpleResponse" : {
+                              "textToSpeech": "Give your Designation" 
+                            }
+                        }
+                      ],
+                      "suggestions": [
+                        {
+                            "title": "Quality Analyst"
+                        },
+                        {
+                            "title": "Software Developer"
+                        },
+                        {
+                          "title": "Research and Developement"
+                        },
+                        {
+                          "title": "Production"
+                        },
+                        {
+                          "title": "Marketing"
+                        },
+                        {
+                          "title": "Account and Finance"
+                        }
+                      ]
+                    }
+                  }
+                }
       });
     } else {
       req.body.result.contexts.forEach(function(context){
@@ -84,10 +112,10 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** :"+id.name+
-                                "  " +"**Phone Number** :"+id.number+
-                                "  " +"**Email ID** :"+id.email+
-                                "  " +"**Designation** :"+id.designation,
+                              "formattedText": "**Name** : "+id.name+
+                                "  " +" **Phone Number** : "+id.number+
+                                "  " +" **Email ID** : "+id.email+
+                                "  " +" **Designation** : "+id.designation,
                               "buttons" : []
                           }
                         }
