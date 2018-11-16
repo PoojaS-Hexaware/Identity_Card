@@ -310,7 +310,7 @@ app.post("/demo", function(req, res) {
         'number' : selectedNum,
         'designation' : selectedDesg,
         }
-     if (itemValues.number == keySelected) {
+     if (selectedId.number == keySelected) {
       return res.json({
         "speech": "Information for selected id Card",
         "displayText": "Information for selected id Card",
