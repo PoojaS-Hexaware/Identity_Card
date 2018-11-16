@@ -324,7 +324,7 @@ app.post("/demo", function(req, res) {
                     "textToSpeech": "Detailed information of selected id Card :" 
                     }
                   },
-                  {
+                  /*{
                     "basicCard": {
                       "title": "Identity Card",
                       "formattedText": "**Name** : " + selectedId.name + "  \n" +
@@ -333,7 +333,7 @@ app.post("/demo", function(req, res) {
                         "**Designation** : " + selectedId.designation,
                       "buttons" : []
                     }
-                  },
+                  },*/
                 ],
                 "suggestions": [
                   {
@@ -343,6 +343,27 @@ app.post("/demo", function(req, res) {
                       "title": "exit"
                   }
                 ]
+              },
+              "systemIntent": {
+                "intent": "actions.intent.OPTION",
+                "data": {
+                  "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                  "listSelect": {
+                    "title": "List of all the Id Card Request Submitted",
+                    "items": [
+                      {
+                        "basicCard": {
+                          "title": "Identity Card",
+                          "formattedText": "**Name** : " + selectedId.name + "  \n" +
+                            "**Phone Number** : " + selectedId.email +"  \n" +
+                            "**Email ID** : " + selectedId.number + "  \n" +
+                            "**Designation** : " + selectedId.designation,
+                          "buttons" : []
+                        }
+                      }
+                    ]
+                  }
+                }
               }
             }
           }
