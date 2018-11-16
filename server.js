@@ -295,11 +295,20 @@ app.post("/demo", function(req, res) {
     }
     if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
       keySelected = req.body.result.parameters.number;
-      var selectedId = [];
+      var selectedId = {
+        'name'  : null,
+        'email' : null,
+        'number' : null,
+        'designation' : null,
+      };
       for (i=0 ; requestCard.length; i++) {
         if(keySelected == requestCard[i].number) {
-          selectedId.push(requestCard[i]);
-        }
+          var selectedId = {
+            'name'  : requestCard[i].name,
+            'email' : requestCard[i].email,
+            'number' : requestCard[i].number,
+            'designation' : requestCard[i].designation,
+            }
       }
       /*req.body.result.contexts.forEach(function(context){
         if(context.name == '_actions_on_google'){
