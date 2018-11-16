@@ -303,8 +303,9 @@ app.post("/demo", function(req, res) {
       };
       for (i=0 ; requestCard.length; i++) {
         if(keySelected == requestCard[i].number) {
-         selectedId.push(requestCard[i]);
+          selectedId.push(requestCard[i]);
       }
+    }
       /*req.body.result.contexts.forEach(function(context){
         if(context.name == '_actions_on_google'){
           selectedName = context.parameters.any;
@@ -358,6 +359,5 @@ app.post("/demo", function(req, res) {
           }
       });
      }
-    }
   }     
 });
