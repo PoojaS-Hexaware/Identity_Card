@@ -295,16 +295,17 @@ app.post("/demo", function(req, res) {
     }
     if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
       keySelected = req.body.result.parameters.number;
-      /*var selectedId = {
+      
+      var selectedId = {
         'name'  : null,
         'email' : null,
         'number' : null,
         'designation' : null,
-      };*/
+      };
       for (i=0 ; i < requestCard.length; i++) {
         //selectedId.number = requestCard[i].number
         if (keySelected == requestCard[i].number) {
-          var selectedId = {
+          selectedId = {
             'name'  : requestCard[i].name,
             'email' : requestCard[i].email,
             'number' : requestCard[i].number,
