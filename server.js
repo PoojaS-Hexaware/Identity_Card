@@ -295,11 +295,21 @@ app.post("/demo", function(req, res) {
       }
     }
     if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
+      keySelected = req.body.result.parameters.number;
       req.body.result.contexts.forEach(function(context){
-        if(context.name == 'viewrequests-followup'){
-          keySelected = context.parameters.phone-number;
-        }  
+        if(context.name == '_actions_on_google'){
+          selectedName = context.parameters.any;
+          selectedEmail = context.parameters.email;
+          selectedNum = context.parameters.number;
+          selectedDesg = context.parameters.Designation;
+        }
       })
+      var selectedId = {
+        'name'  : selectedName,
+        'email' : selectedEmail,
+        'number' : selectedNum,
+        'designation' : selectedDesg,
+        }
      if (itemValues.number == keySelected) {
       return res.json({
         "speech": "Information for selected id Card",
@@ -318,10 +328,10 @@ app.post("/demo", function(req, res) {
                   {
                     "basicCard": {
                       "title": "Identity Card",
-                      "formattedText": "**Name** : " + itemValues.name + "  \n" +
-                        "**Phone Number** : " + itemValues.number +"  \n" +
-                        "**Email ID** : " + itemValues.email + "  \n" +
-                        "**Designation** : " + itemValues.designation,
+                      "formattedText": "**Name** : " + selectedId.name + "  \n" +
+                        "**Phone Number** : " + selectedId.email +"  \n" +
+                        "**Email ID** : " + selectedId.number + "  \n" +
+                        "**Designation** : " + selectedId.designation,
                       "buttons" : []
                     }
                   },
