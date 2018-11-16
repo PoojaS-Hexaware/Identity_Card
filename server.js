@@ -305,12 +305,12 @@ app.post("/demo", function(req, res) {
       for (i=0 ; i < requestCard.length; i++) {
         //selectedId.number = requestCard[i].number
         if (keySelected == requestCard[i].number) {
-          var selectedId = {
+          /*var selectedId = {
             'name'  : requestCard[i].name,
             'email' : requestCard[i].email,
             'number' : requestCard[i].number,
             'designation' : requestCard[i].designation,
-          };
+          };*/
           return res.json({
               "speech": "Information for selected id Card",
               "displayText": "Information for selected id Card",
@@ -328,10 +328,10 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                             "title": "Identity Card",
-                            "formattedText": "**Name** : " + selectedId.name + "  \n" +
-                              "**Phone Number** : " + selectedId.number +"  \n" +
-                              "**Email ID** : " + selectedId.email + "  \n" +
-                              "**Designation** : " + selectedId.designation,
+                            "formattedText": "**Name** : " + requestCard[i].name + "  \n" +
+                              "**Phone Number** : " + requestCard[i].number +"  \n" +
+                              "**Email ID** : " + requestCard[i].email + "  \n" +
+                              "**Designation** : " + requestCard[i].designation,
                             "buttons" : []
                           }
                         },
