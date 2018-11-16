@@ -252,7 +252,7 @@ app.post("/demo", function(req, res) {
         //item.push(requestCard[i]);
         itemValues.push({
           "optionInfo": {
-              "key": "PhoneNumber :"  + requestCard[i].number,
+              "key": requestCard[i].number,
               "synonyms": [
                   "phone number",
                   requestCard[i].number
