@@ -201,8 +201,8 @@ app.post("/demo", function(req, res) {
       requestCard.push(id);
       return res.json({
 
-        "speech": "Id Card request Submitted successfully !!",
-        "displayText": "Requested updated",
+        "speech": "Only one Id Card Requested !!",
+        "displayText": "Only one Id Card Requested",
 
         "data": {
             "google": {
@@ -211,7 +211,7 @@ app.post("/demo", function(req, res) {
                       "items" : [
                         {
                           "simpleResponse" : {
-                              "textToSpeech": "list of id card requested"
+                              "textToSpeech": "following is id card requested"
                             }
                         },
                         {
@@ -265,8 +265,8 @@ app.post("/demo", function(req, res) {
       }
       return res.json({
             
-        "speech": "Id Card Requested",
-        "displayText": "",
+        "speech": "List of Id Card Requested",
+        "displayText": "List of Id Card Requested",
         "data": {
             "google": {
               "expectUserResponse": true,
@@ -295,5 +295,6 @@ app.post("/demo", function(req, res) {
         });
       }
     }
+    
 });
       
