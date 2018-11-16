@@ -264,7 +264,6 @@ app.post("/demo", function(req, res) {
         })
       }
       return res.json({
-            
         "speech": "List of Id Card Requested",
         "displayText": "List of Id Card Requested",
         "data": {
@@ -295,6 +294,25 @@ app.post("/demo", function(req, res) {
         });
       }
     }
-    
-      
+    if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
+      return res.json({
+        "speech": "Information for selected id Card",
+        "displayText": "Information for selected id Card",
+
+        "data": {
+            "google": {
+              "expectedUserResponse":true,
+              "richResponse" : {
+                "items" : [
+                  {
+                    "simpleResponse" : {
+                    "textToSpeech": "Detailed information of selected id Card :" 
+                    }
+                  }
+                ]
+              }
+            }
+          }
+      });
+    }     
 });
