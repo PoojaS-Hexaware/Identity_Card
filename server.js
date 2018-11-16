@@ -315,7 +315,7 @@ app.post("/demo", function(req, res) {
         'number' : selectedNum,
         'designation' : selectedDesg,
         }*/
-    // if (selectedId.number == keySelected) {
+     if (selectedId.number == keySelected) {
       return res.json({
         "speech": "Information for selected id Card",
         "displayText": "Information for selected id Card",
@@ -353,6 +353,6 @@ app.post("/demo", function(req, res) {
             }
           }
       });
-     //}
+     }
     }     
 });
