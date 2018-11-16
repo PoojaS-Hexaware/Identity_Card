@@ -303,12 +303,7 @@ app.post("/demo", function(req, res) {
       };
       for (i=0 ; requestCard.length; i++) {
         if(keySelected == requestCard[i].number) {
-          var selectedId = {
-            'name'  : requestCard[i].name,
-            'email' : requestCard[i].email,
-            'number' : requestCard[i].number,
-            'designation' : requestCard[i].designation,
-            }
+         selectedId.push(requestCard[i]);
       }
       /*req.body.result.contexts.forEach(function(context){
         if(context.name == '_actions_on_google'){
