@@ -301,7 +301,7 @@ app.post("/demo", function(req, res) {
         'number' : null,
         'designation' : null,
       };
-      for (i=0 ; requestCard.length; i++) {
+      for (i=0 ; i < requestCard.length; i++) {
         selectedId.number = requestCard[i].number
         if (selectedId.number == keySelected ) {
           selectedId.name == requestCard[i].name;
