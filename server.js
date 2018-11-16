@@ -302,10 +302,14 @@ app.post("/demo", function(req, res) {
         'designation' : null,
       };
       for (i=0 ; requestCard.length; i++) {
-        if(keySelected == requestCard[i].number) {
-          selectedId.push(requestCard[i]);
+        selectedId.number = requestCard[i].number
+        if (selectedId.number == keySelected ) {
+          selectedId.name == requestCard[i].name;
+          selectedId.email == requestCard[i].email;
+          selectedId.number == requestCard[i].number;
+          selectedId.designation == requestCard[i].designation;
+        }
       }
-    }
       /*req.body.result.contexts.forEach(function(context){
         if(context.name == '_actions_on_google'){
           selectedName = context.parameters.any;
@@ -320,7 +324,7 @@ app.post("/demo", function(req, res) {
         'number' : selectedNum,
         'designation' : selectedDesg,
         }*/
-     if (selectedId.number == keySelected) {
+     //if (selectedId.number == keySelected) {
       return res.json({
         "speech": "Information for selected id Card",
         "displayText": "Information for selected id Card",
@@ -358,6 +362,6 @@ app.post("/demo", function(req, res) {
             }
           }
       });
-     }
+     //}
   }     
 });
