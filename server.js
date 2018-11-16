@@ -254,9 +254,8 @@ app.post("/demo", function(req, res) {
           "optionInfo": {
               "key": "PhoneNumber :"  + requestCard[i].number,
               "synonyms": [
-                  "View Card",
-                  "All card requested",
-                  "View list of card requested"
+                  "phone number",
+                  requestCard[i].number
               ]
           },
           "title": "Submitted request of :" + requestCard[i].name,
