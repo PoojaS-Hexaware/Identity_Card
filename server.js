@@ -302,12 +302,12 @@ app.post("/demo", function(req, res) {
         'designation' : null,
       };
       for (i=0 ; i < requestCard.length; i++) {
-        selectedId.number = requestCard[i].number
-        if (keySelected == selectedId.number) {
+        //selectedId.number = requestCard[i].number
+        if (keySelected == requestCard[i].number) {
           selectedId.name = requestCard[i].name;
           selectedId.email = requestCard[i].email;
           selectedId.number = requestCard[i].number;
-          selectedId.designation = requestCard[i].designation;
+          selectedId.designation = requestCard[i].designation;s
         }
       }
       /*req.body.result.contexts.forEach(function(context){
