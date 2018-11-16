@@ -303,7 +303,7 @@ app.post("/demo", function(req, res) {
       };
       for (i=0 ; i < requestCard.length; i++) {
         selectedId.number = requestCard[i].number
-        if (selectedId.number == keySelected ) {
+        if (keySelected == selectedId.number) {
           selectedId.name = requestCard[i].name;
           selectedId.email = requestCard[i].email;
           selectedId.number = requestCard[i].number;
