@@ -295,6 +295,12 @@ app.post("/demo", function(req, res) {
       }
     }
     if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
+      req.body.result.contexts.forEach(function(context){
+        if(context.name == 'viewrequests-followup'){
+          keySelected = context.parameters.phone-number;
+        }  
+      })
+     if (itemValues.number == keySelected) {
       return res.json({
         "speech": "Information for selected id Card",
         "displayText": "Information for selected id Card",
@@ -308,11 +314,30 @@ app.post("/demo", function(req, res) {
                     "simpleResponse" : {
                     "textToSpeech": "Detailed information of selected id Card :" 
                     }
+                  },
+                  {
+                    "basicCard": {
+                      "title": "Identity Card",
+                      "formattedText": "**Name** : " + itemValues.name + "  \n" +
+                        "**Phone Number** : " + itemValues.number +"  \n" +
+                        "**Email ID** : " + itemValues.email + "  \n" +
+                        "**Designation** : " + itemValues.designation,
+                      "buttons" : []
+                    }
+                  },
+                ],
+                "suggestions": [
+                  {
+                      "title": "create Id Card"
+                  },
+                  {
+                      "title": "exit"
                   }
                 ]
               }
             }
           }
       });
+     }
     }     
 });
