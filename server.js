@@ -348,8 +348,6 @@ app.post("/demo", function(req, res) {
                 "intent": "actions.intent.OPTION",
                 "data": {
                   "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                  "listSelect": {
-                    "title": "List of all the Id Card Request Submitted",
                     "items": [
                       {
                         "basicCard": {
@@ -362,7 +360,6 @@ app.post("/demo", function(req, res) {
                         }
                       }
                     ]
-                  }
                 }
               }
             }
