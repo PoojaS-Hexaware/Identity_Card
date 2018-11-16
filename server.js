@@ -305,12 +305,50 @@ app.post("/demo", function(req, res) {
       for (i=0 ; i < requestCard.length; i++) {
         //selectedId.number = requestCard[i].number
         if (keySelected == requestCard[i].number) {
-          global.selectedId = {
+          var selectedId = {
             'name'  : requestCard[i].name,
             'email' : requestCard[i].email,
             'number' : requestCard[i].number,
             'designation' : requestCard[i].designation,
           };
+          return res.json({
+              "speech": "Information for selected id Card",
+              "displayText": "Information for selected id Card",
+      
+              "data": {
+                  "google": {
+                    "expectedUserResponse":true,
+                    "richResponse" : {
+                      "items" : [
+                        {
+                          "simpleResponse" : {
+                          "textToSpeech": "Detailed information of selected id Card :" 
+                          }
+                        },
+                        {
+                          "basicCard": {
+                            "title": "Identity Card",
+                            "formattedText": "**Name** : " + selectedId.name + "  \n" +
+                              "**Phone Number** : " + selectedId.number +"  \n" +
+                              "**Email ID** : " + selectedId.email + "  \n" +
+                              "**Designation** : " + selectedId.designation,
+                            "buttons" : []
+                          }
+                        },
+                      ],
+                      "suggestions": [
+                        {
+                            "title": "create Id Card"
+                        },
+                        {
+                            "title": "exit"
+                        }
+                      ]
+                    }
+                  }
+                }
+            });
+         
           /*selectedId.name = requestCard[i].name;
           selectedId.email = requestCard[i].email;
           selectedId.number = requestCard[i].number;
@@ -332,43 +370,7 @@ app.post("/demo", function(req, res) {
         'designation' : selectedDesg,
         }*/
      //if (selectedId.number == keySelected) {
-      return res.json({
-        "speech": "Information for selected id Card",
-        "displayText": "Information for selected id Card",
-
-        "data": {
-            "google": {
-              "expectedUserResponse":true,
-              "richResponse" : {
-                "items" : [
-                  {
-                    "simpleResponse" : {
-                    "textToSpeech": "Detailed information of selected id Card :" 
-                    }
-                  },
-                  {
-                    "basicCard": {
-                      "title": "Identity Card",
-                      "formattedText": "**Name** : " + selectedId.name + "  \n" +
-                        "**Phone Number** : " + selectedId.number +"  \n" +
-                        "**Email ID** : " + selectedId.email + "  \n" +
-                        "**Designation** : " + selectedId.designation,
-                      "buttons" : []
-                    }
-                  },
-                ],
-                "suggestions": [
-                  {
-                      "title": "create Id Card"
-                  },
-                  {
-                      "title": "exit"
-                  }
-                ]
-              }
-            }
-          }
-      });
+      
      //}
   }     
 });
