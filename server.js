@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
+const {
+  OPTION } = require('action_on_google')
 var requestCard = [];
 
 
@@ -295,7 +297,13 @@ app.post("/demo", function(req, res) {
     }
     if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
       keySelected = req.body.result.parameters.number;
-      req.body.result.contexts.forEach(function(context){
+      var selectedId = [];
+      for (i=0 ; requestCard.length; i++) {
+        if(keySelected == requestCard[i].number) {
+          selectedId.push(requestCard[i]);
+        }
+      }
+      /*req.body.result.contexts.forEach(function(context){
         if(context.name == '_actions_on_google'){
           selectedName = context.parameters.any;
           selectedEmail = context.parameters.email;
@@ -308,8 +316,8 @@ app.post("/demo", function(req, res) {
         'email' : selectedEmail,
         'number' : selectedNum,
         'designation' : selectedDesg,
-        }
-     if (selectedId.number == keySelected) {
+        }*/
+    // if (selectedId.number == keySelected) {
       return res.json({
         "speech": "Information for selected id Card",
         "displayText": "Information for selected id Card",
@@ -328,8 +336,8 @@ app.post("/demo", function(req, res) {
                     "basicCard": {
                       "title": "Identity Card",
                       "formattedText": "**Name** : " + selectedId.name + "  \n" +
-                        "**Phone Number** : " + selectedId.email +"  \n" +
-                        "**Email ID** : " + selectedId.number + "  \n" +
+                        "**Phone Number** : " + selectedId.number +"  \n" +
+                        "**Email ID** : " + selectedId.email + "  \n" +
                         "**Designation** : " + selectedId.designation,
                       "buttons" : []
                     }
@@ -347,6 +355,6 @@ app.post("/demo", function(req, res) {
             }
           }
       });
-     }
+     //}
     }     
 });
