@@ -86,6 +86,7 @@ app.post("/demo", function(req, res) {
                 }
       });
     } else {
+      var id_number = Math.floor(Math.random() * 100) + 1;
       req.body.result.contexts.forEach(function(context){
           if(context.name == 'createidcard-followup'){
             RequestedName = context.parameters.any;
@@ -96,6 +97,7 @@ app.post("/demo", function(req, res) {
         'email' : req.body.result.parameters.email,
         'number' : req.body.result.parameters.number,
         'designation' : req.body.result.parameters.Designation,
+        'id_number' : id_number
       }
       requestCard.push(id);
       console.log(id);
@@ -118,7 +120,8 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : "+ id.name +
+                              "formattedText": "**Id_no.** : "+ id.id_number +
+                              "**Name** : "+ id.name +
                               "  \n" + "**Phone Number** : "+ id.number +
                               "  \n" + "**Email ID** : "+ id.email +
                               "  \n" + "**Designation** : "+ id.designation,
@@ -193,13 +196,15 @@ app.post("/demo", function(req, res) {
           Email = context.parameters.email;
           Num = context.parameters.number;
           Desg = context.parameters.Designation;
+          Id_number = context.parameters.id_number;
         }  
       })
       var id = {
       'name'  : RequestedName,
       'email' : Email,
       'number' : Num,
-      'designation' : Desg
+      'designation' : Desg,
+      'id_number' : Id_number
       }
       requestCard.push(id);
       return res.json({
@@ -220,7 +225,8 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Name** : " + id.name + "  \n" +
+                              "formattedText": "**ID_NO.** : " + id.id_number + "  \n" +
+                                "**Name** : " + id.name + "  \n" +
                                 "**Phone Number** : " + id.number +"  \n" +
                                 "**Email ID** : " + id.email + "  \n" +
                                 "**Designation** : " + id.designation,
@@ -255,10 +261,10 @@ app.post("/demo", function(req, res) {
         //item.push(requestCard[i]);
         itemValues.push({
           "optionInfo": {
-              "key": requestCard[i].number,
+              "key": requestCard[i].id_number,
               "synonyms": [
-                  "phone number",
-                  requestCard[i].number
+                  "identity number",
+                  requestCard[i].id_number
               ]
           },
           "title": "Submitted request of :" + requestCard[i].name,
@@ -276,7 +282,7 @@ app.post("/demo", function(req, res) {
                   {
                     "simpleResponse": {
                       "textToSpeech": "Following are the list of Id Card request submitted!! " 
-                      + "Choose one for detailed information."
+                      + "  /n" + "Choose one for detailed information."
                     }
                   }
                 ]
@@ -299,15 +305,15 @@ app.post("/demo", function(req, res) {
     if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
       console.log("id in follow up"+ JSON.stringify (req.body.result));
       keySelected = req.body.result.parameters.number;
-      console.log("Type of phoneNumber is " +typeof keySelected);
-      req.body.result.contexts.forEach(function(context){
+      console.log("Type of identity Number is " +typeof keySelected);
+      /*req.body.result.contexts.forEach(function(context){
         if(context.name == '_actions_on_google'){
           selectedName = context.parameters.any;
           selectedEmail = context.parameters.email;
           selectedNum = context.parameters.number;
           selectedDesg = context.parameters.Designation;
         }  
-      })
+      })*/
       var id = {
         'name'  : selectedName,
         'email' : selectedEmail,
@@ -330,13 +336,15 @@ app.post("/demo", function(req, res) {
               {
                 "basicCard": {
                   "title": "Identity Card",
-                  "formattedText": "**Name** : " + id.name + "  \n" +
-                  "**Phone Number** : " + id.number +"  \n" +
+                  "subtitle": "**Name** : " + id.name + "  \n",
+                  "formattedText": "**Phone Number** : " + id.number +"  \n" +
                   "**Email ID** : " + id.email + "  \n" +
                   "**Designation** : " + id.designation,
-                  "buttons" : []
+                  "image": null,                    
+                  "buttons" : [],
+                  "imageDisplayOptions": "CROPPED"
                 }
-              }
+              },
             ],
             "suggestions": [
               {
