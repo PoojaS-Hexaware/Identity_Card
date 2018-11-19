@@ -305,7 +305,7 @@ app.post("/demo", function(req, res) {
     }
     if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
       console.log("id in follow up"+ JSON.stringify (req.body.result));
-      keySelected = req.body.result.parameters.number;
+      var keySelected = req.body.result.parameters.number;
       console.log("Type of identity Number is " +typeof keySelected);
       /*req.body.result.contexts.forEach(function(context){
         if(context.name == '_actions_on_google'){
