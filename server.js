@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
-var requestCard = [];
+var requestCard = [] 
+var id_number = 0;
 
 
 
@@ -86,7 +87,7 @@ app.post("/demo", function(req, res) {
                 }
       });
     } else {
-      var id_number = Math.floor(Math.random() * 100) + 1;
+      id_number += 1;
       req.body.result.contexts.forEach(function(context){
           if(context.name == 'createidcard-followup'){
             RequestedName = context.parameters.any;
@@ -190,7 +191,7 @@ app.post("/demo", function(req, res) {
           }
       });
     } else if (requestCard.length == 1) {
-      req.body.result.contexts.forEach(function(context){
+      /*req.body.result.contexts.forEach(function(context){
         if(context.name == 'createidcard-followup'){
           RequestedName = context.parameters.any;
           Email = context.parameters.email;
@@ -206,7 +207,7 @@ app.post("/demo", function(req, res) {
       'designation' : Desg,
       'id_number' : Id_number
       }
-      requestCard.push(id);
+      requestCard.push(id);*/
       return res.json({
 
         "speech": "Only one Id Card Requested !!",
@@ -225,11 +226,11 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**ID_NO.** : " + id.id_number + "  \n" +
-                                "**Name** : " + id.name + "  \n" +
-                                "**Phone Number** : " + id.number +"  \n" +
-                                "**Email ID** : " + id.email + "  \n" +
-                                "**Designation** : " + id.designation,
+                              "formattedText": "**ID_NO.** : " + requestCard[0].id_number + "  \n" +
+                                "**Name** : " + requestCard[0].name + "  \n" +
+                                "**Phone Number** : " + requestCard[0].number +"  \n" +
+                                "**Email ID** : " + requestCard[0].email + "  \n" +
+                                "**Designation** : " + requestCard[0].designation,
                               "buttons" : []
                           }
                         }
@@ -330,10 +331,11 @@ app.post("/demo", function(req, res) {
               {
                 "basicCard": {
                   "title": "Identity Card",
-                  "subtitle": "**Name** : " + id.name + "  \n",
-                  "formattedText": "**Phone Number** : " + id.number +"  \n" +
-                  "**Email ID** : " + id.email + "  \n" +
-                  "**Designation** : " + id.designation,
+                  "subtitle": "**Identity Number** : " + requestCard[keySelected].id_number + "  \n",
+                  "formattedText": "**Name** : " + requestCard[keySelected].name + "  \n" +
+                  "**Phone Number** : " + requestCard[keySelected].number +"  \n" +
+                  "**Email ID** : " + requestCard[keySelected].email + "  \n" +
+                  "**Designation** : " + requestCard[keySelected].designation,
                   "image": null,                    
                   "buttons" : [],
                   "imageDisplayOptions": "CROPPED"
