@@ -265,7 +265,7 @@ app.post("/demo", function(req, res) {
               "key": requestCard[i].id_number.toString(),
               "synonyms": [
                   "identity number",
-                  requestCard[i].id_number
+                  requestCard[i].id_number.toString()
               ]
           },
           "title": "Submitted request of :" + requestCard[i].name,
