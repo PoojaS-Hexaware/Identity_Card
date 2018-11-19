@@ -331,11 +331,11 @@ app.post("/demo", function(req, res) {
               {
                 "basicCard": {
                   "title": "Identity Card",
-                  "subtitle": "**Identity Number** : " + requestCard[keySelected].id_number + "  \n",
-                  "formattedText": "**Name** : " + requestCard[keySelected].name + "  \n" +
-                  "**Phone Number** : " + requestCard[keySelected].number +"  \n" +
-                  "**Email ID** : " + requestCard[keySelected].email + "  \n" +
-                  "**Designation** : " + requestCard[keySelected].designation,
+                  "subtitle": "**Identity Number** : " + requestCard[keySelected - 1].id_number + "  \n",
+                  "formattedText": "**Name** : " + requestCard[keySelected - 1].name + "  \n" +
+                  "**Phone Number** : " + requestCard[keySelected - 1].number +"  \n" +
+                  "**Email ID** : " + requestCard[keySelected - 1].email + "  \n" +
+                  "**Designation** : " + requestCard[keySelected - 1].designation,
                   "image": null,                    
                   "buttons" : []
                 }
