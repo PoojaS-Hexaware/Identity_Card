@@ -307,14 +307,7 @@ app.post("/demo", function(req, res) {
       console.log("id in follow up"+ JSON.stringify (req.body.result));
       var keySelected = req.body.result.parameters.number;
       console.log("Type of identity Number is " +typeof keySelected);
-      /*req.body.result.contexts.forEach(function(context){
-        if(context.name == '_actions_on_google'){
-          selectedName = context.parameters.any;
-          selectedEmail = context.parameters.email;
-          selectedNum = context.parameters.number;
-          selectedDesg = context.parameters.Designation;
-        }  
-      })*/
+      
       return res.json({
         "speech": "Information for selected id Card",
         "displayText": "Information for selected id Card",
@@ -331,7 +324,7 @@ app.post("/demo", function(req, res) {
               {
                 "basicCard": {
                   "title": "Identity Card",
-                  "subtitle": "**Identity Number** : " + requestCard[keySelected - 1].id_number + "  \n",
+                  "subtitle": " Identity Number : " + requestCard[keySelected - 1].id_number + "  \n",
                   "formattedText": "**Name** : " + requestCard[keySelected - 1].name + "  \n" +
                   "**Phone Number** : " + requestCard[keySelected - 1].number +"  \n" +
                   "**Email ID** : " + requestCard[keySelected - 1].email + "  \n" +
