@@ -278,7 +278,7 @@ app.post("/demo", function(req, res) {
                   }
                 ]
               },
-              "systemIntent": {
+              "possibleIntents": {
                 "intent": "actions.intent.OPTION",
                 "data": {
                   "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
