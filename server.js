@@ -163,7 +163,10 @@ app.post("/demo", function(req, res) {
         "data": {
             "google": {
               "expectedUserResponse":true,
-                  "richResponse" : {
+              "expectedInputs" : [
+                {
+                  "inputPrompt" : {
+                  "richInitialPrompt" : {
                       "items" : [
                         {
                           "simpleResponse" : {
@@ -182,6 +185,9 @@ app.post("/demo", function(req, res) {
                     }
                   }
                 }
+              ]
+            }
+          }
       });
     } else if (requestCard.length == 1) {
       req.body.result.contexts.forEach(function(context){
