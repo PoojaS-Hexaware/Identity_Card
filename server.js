@@ -196,7 +196,7 @@ app.post("/demo", function(req, res) {
       'name'  : RequestedName,
       'email' : Email,
       'number' : Num,
-      'designation' : Desg,
+      'designation' : Desg
       }
       requestCard.push(id);
       return res.json({
