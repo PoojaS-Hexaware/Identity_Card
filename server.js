@@ -120,11 +120,11 @@ app.post("/demo", function(req, res) {
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**Id_no.** : "+ id.id_number +
-                              "**Name** : "+ id.name +
-                              "  \n" + "**Phone Number** : "+ id.number +
-                              "  \n" + "**Email ID** : "+ id.email +
-                              "  \n" + "**Designation** : "+ id.designation,
+                              "formattedText": "**Id_no.** : "+ id.id_number +"  \n" +
+                              "**Name** : "+ id.name +"  \n" +
+                              "**Phone Number** : "+ id.number +"  \n" +
+                              "**Email ID** : "+ id.email +"  \n" +
+                              "**Designation** : "+ id.designation,
                               "buttons" : []
                           }
                         }
@@ -314,12 +314,6 @@ app.post("/demo", function(req, res) {
           selectedDesg = context.parameters.Designation;
         }  
       })*/
-      var id = {
-        'name'  : selectedName,
-        'email' : selectedEmail,
-        'number' : selectedNum,
-        'designation' : selectedDesg
-        }
       return res.json({
         "speech": "Information for selected id Card",
         "displayText": "Information for selected id Card",
