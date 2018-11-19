@@ -298,88 +298,51 @@ app.post("/demo", function(req, res) {
     }
     if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
       console.log("id in follow up"+ JSON.stringify (req.body.result));
-      /*req.body.result.contexts.forEach(function(context){
-        if(context.name == 'actions_intent_option'){
-          keySelected = context.parameters.OPTION;
-        }  
-    })*/
       keySelected = req.body.result.parameters.number;
       console.log("Type of phoneNumber is " +typeof keySelected);
-      /*var selectedId = {
-        'name'  : null,
-        'email' : null,
-        'number' : null,
-        'designation' : null,
-      };*/
-      for (i=0 ; i < requestCard.length; i++) {
-        //selectedId.number = requestCard[i].number
-        if (keySelected == requestCard[i].number) {
-          /*var selectedId = {
-            'name'  : requestCard[i].name,
-            'email' : requestCard[i].email,
-            'number' : requestCard[i].number,
-            'designation' : requestCard[i].designation,
-          };*/
-          return res.json({
-              "speech": "Information for selected id Card",
-              "displayText": "Information for selected id Card",
-      
-              "data": {
-                  "google": {
-                    "expectedUserResponse":true,
-                    "richResponse" : {
-                      "items" : [
-                        {
-                          "simpleResponse" : {
-                          "textToSpeech": "Detailed information of selected id Card :" 
-                          }
-                        },
-                        {
-                          "basicCard": {
-                            "title": "Identity Card",
-                            "formattedText": "**Name** : " + requestCard[i].name + "  \n" +
-                              "**Phone Number** : " + requestCard[i].number +"  \n" +
-                              "**Email ID** : " + requestCard[i].email + "  \n" +
-                              "**Designation** : " + requestCard[i].designation,
-                            "buttons" : []
-                          }
-                        },
-                      ],
-                      "suggestions": [
-                        {
-                            "title": "create Id Card"
-                        },
-                        {
-                            "title": "exit"
-                        }
-                      ]
-                    }
-                  }
-                }
-            });
-          break;
-          /*selectedId.name = requestCard[i].name;
-          selectedId.email = requestCard[i].email;
-          selectedId.number = requestCard[i].number;
-          selectedId.designation = requestCard[i].designation;*/
-        }
-      }
-      /*req.body.result.contexts.forEach(function(context){
+      req.body.result.contexts.forEach(function(context){
         if(context.name == '_actions_on_google'){
           selectedName = context.parameters.any;
           selectedEmail = context.parameters.email;
           selectedNum = context.parameters.number;
           selectedDesg = context.parameters.Designation;
-        }
+        }  
       })
-      var selectedId = {
-        'name'  : selectedName,
-        'email' : selectedEmail,
-        'number' : selectedNum,
-        'designation' : selectedDesg,
-        }*/
-     //if (selectedId.number == keySelected) {
-      
-     //}
-  }     
+      return res.json({
+        "speech": "Information for selected id Card",
+        "displayText": "Information for selected id Card",
+        "data": {
+          "google": {
+            "expectedUserResponse":true,
+            "richResponse" : {
+              "items" : [
+                {
+                  "simpleResponse" : {
+                  "textToSpeech": "Detailed information of selected id Card :"
+                }
+              },
+              {
+                "basicCard": {
+                  "title": "Identity Card",
+                  "formattedText": "**Name** : " + selectedName + "  \n" +
+                  "**Phone Number** : " + selectedNum +"  \n" +
+                  "**Email ID** : " + selectedEmail + "  \n" +
+                  "**Designation** : " + selectedDesg,
+                  "buttons" : []
+                }
+              },
+            ],
+            "suggestions": [
+              {
+                "title": "create Id Card"
+              },
+              {
+                "title": "exit"
+              }
+            ]
+          }
+        }
+      }
+    });
+  }    
 });
