@@ -303,7 +303,7 @@ app.post("/demo", function(req, res) {
           keySelected = context.parameters.OPTION;
         }  
     })*/
-      keySelected = req.body.result.parameters.O;
+      keySelected = req.body.result.parameters.number;
       console.log("Type of phoneNumber is " +typeof keySelected);
       /*var selectedId = {
         'name'  : null,
