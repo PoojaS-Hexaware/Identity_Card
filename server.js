@@ -163,10 +163,9 @@ app.post("/demo", function(req, res) {
         "data": {
             "google": {
               "expectedUserResponse":true,
-              "expectedInputs" : [
+              "richResponse" : 
                 {
-                  "inputPrompt" : {
-                  "richInitialPrompt" : {
+                  
                       "items" : [
                         {
                           "simpleResponse" : {
@@ -182,10 +181,8 @@ app.post("/demo", function(req, res) {
                             "title": "exit"
                         }
                       ]
-                    }
-                  }
+                  
                 }
-              ]
             }
           }
       });
