@@ -262,7 +262,7 @@ app.post("/demo", function(req, res) {
         //item.push(requestCard[i]);
         itemValues.push({
           "optionInfo": {
-              "key": requestCard[i].id_number,
+              "key": requestCard[i].id_number.toString(),
               "synonyms": [
                   "identity number",
                   requestCard[i].id_number
@@ -337,8 +337,7 @@ app.post("/demo", function(req, res) {
                   "**Email ID** : " + requestCard[keySelected].email + "  \n" +
                   "**Designation** : " + requestCard[keySelected].designation,
                   "image": null,                    
-                  "buttons" : [],
-                  "imageDisplayOptions": "CROPPED"
+                  "buttons" : []
                 }
               },
             ],
