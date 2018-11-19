@@ -297,8 +297,9 @@ app.post("/demo", function(req, res) {
       }
     }
     if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
+      console.log("id in follow up"+ JSON.stringify (req.body.result));
       keySelected = req.body.result.parameters.number;
-      
+      console.log("Type of phoneNumber is " +typeof keySelected);
       /*var selectedId = {
         'name'  : null,
         'email' : null,
