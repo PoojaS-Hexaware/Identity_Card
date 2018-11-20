@@ -21,14 +21,14 @@ app.post("/demo", function(req, res) {
   if (req.body.result.metadata.intentName == "CreateIdCard") {
     if (!req.body.result.parameters.any) {
       return res.json({
-        speech: "Give your name",
-        displayText: "Give your name", 
+        speech: "What is your name",
+        displayText: "What is your name ?", 
         source: "agent"
       });
-    } else if (!req.body.result.parameters.email) {
+    } else if (!req.body.result.parameters.email || req.body.result.metadata.intentName == "Default Fallback Intent") {
       return res.json({
-        speech: "Give your email Id",
-        displayText: "Give your email Id", 
+        speech: "May I know your email Id",
+        displayText: "May I know your email Id", 
         source: "agent"
       });
     }
