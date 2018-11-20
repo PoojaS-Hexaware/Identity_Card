@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var app = express();
 var requestCard = [] 
-var id_number = 0;
+
 
 
 
@@ -86,7 +86,7 @@ app.post("/demo", function(req, res) {
                 }
       });
     } else {
-      id_number += 1;
+      var id_number = Math.floor(Math.random() * (99999 - 10000 + 1) ) + 10000; 
       var id = {
         'name'  : req.body.result.parameters.any,
         'email' : req.body.result.parameters.email,
@@ -99,7 +99,7 @@ app.post("/demo", function(req, res) {
       return res.json({
 
           
-        "speech": "Id Card request Submitted successfully !!",
+        "speech": "OK" + id.name + ", Your ID card request is Submitted Succesfully!!",
         "displayText": "Requested updated",
 
         "data": {
@@ -109,13 +109,13 @@ app.post("/demo", function(req, res) {
                       "items" : [
                         {
                           "simpleResponse" : {
-                              "textToSpeech": "Id card request submitted!!"
+                              "textToSpeech": "OK" + id.name + ", Your ID card request is Submitted Succesfully!!"
                             }
                         },
                         {
                           "basicCard": {
-                              "title": "Identity Card",
-                              "formattedText": "**Id_no.** : "+ id.id_number +"  \n" +
+                              "title": "Submitted ID Card",
+                              "formattedText": "**Request Number** : "+ id.id_number +"  \n" +
                               "**Name** : "+ id.name +"  \n" +
                               "**Phone Number** : "+ id.number +"  \n" +
                               "**Email ID** : "+ id.email +"  \n" +
@@ -126,13 +126,13 @@ app.post("/demo", function(req, res) {
                       ],
                       "suggestions": [
                         {
-                            "title": "create Id Card"
+                            "title": "Create ID Card"
                         },
                         {
-                            "title": "view submitted request"
+                            "title": "View Request"
                         },
                         {
-                          "title" : "exit"
+                          "title" : "Exit"
                         }
                       ]
                     }
@@ -155,8 +155,8 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     //for (var i in requestCard) {
     if (requestCard.length == 0) {
       return res.json({
-        "speech": "Sorry No request submitted !!",
-        "displayText": "Sorry No request submitted",
+        "speech": "Sorry, No request Submitted !!",
+        "displayText": "Sorry, No request Submitted",
 
         "data": {
             "google": {
@@ -167,16 +167,16 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                       "items" : [
                         {
                           "simpleResponse" : {
-                              "textToSpeech": "Sorry No request submitted !!" 
+                              "textToSpeech": "Sorry No Request Submitted !!" 
                             }
                         }
                       ],
                       "suggestions": [
                         {
-                            "title": "create Id Card"
+                            "title": "Create ID Card"
                         },
                         {
-                            "title": "exit"
+                            "title": "Exit"
                         }
                       ]
                   
@@ -185,26 +185,9 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
           }
       });
     } else if (requestCard.length == 1) {
-      /*req.body.result.contexts.forEach(function(context){
-        if(context.name == 'createidcard-followup'){
-          RequestedName = context.parameters.any;
-          Email = context.parameters.email;
-          Num = context.parameters.number;
-          Desg = context.parameters.Designation;
-          Id_number = context.parameters.id_number;
-        }  
-      })
-      var id = {
-      'name'  : RequestedName,
-      'email' : Email,
-      'number' : Num,
-      'designation' : Desg,
-      'id_number' : Id_number
-      }
-      requestCard.push(id);*/
       return res.json({
 
-        "speech": "Only one Id Card Requested !!",
+        "speech": "Following is the only ID Card Submitted till Date",
         "displayText": "Only one Id Card Requested",
 
         "data": {
@@ -214,13 +197,13 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                       "items" : [
                         {
                           "simpleResponse" : {
-                              "textToSpeech": "following is id card requested"
+                              "textToSpeech": "Following is the only ID Card Submitted till Date :"
                             }
                         },
                         {
                           "basicCard": {
                               "title": "Identity Card",
-                              "formattedText": "**ID_NO.** : " + requestCard[0].id_number + "  \n" +
+                              "formattedText": "**Request Number** : " + requestCard[0].id_number + "  \n" +
                                 "**Name** : " + requestCard[0].name + "  \n" +
                                 "**Phone Number** : " + requestCard[0].number +"  \n" +
                                 "**Email ID** : " + requestCard[0].email + "  \n" +
@@ -258,7 +241,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
           "optionInfo": {
               "key": requestCard[i].id_number.toString(),
               "synonyms": [
-                  "identity number",
+                  "request number",
                   requestCard[i].id_number.toString()
               ]
           },
@@ -276,8 +259,8 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 "items": [
                   {
                     "simpleResponse": {
-                      "textToSpeech": "Following are the list of Id Card request submitted!! " 
-                      + "  /n" + "Choose one for detailed information."
+                      "textToSpeech": "Following are the list of Id Card request submitted!!" + "  \n" 
+                      + "Choose one for detailed information."
                     }
                   }
                 ]
@@ -287,7 +270,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 "data": {
                   "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                   "listSelect": {
-                    "title": "List of all the Id Card Request Submitted",
+                    "title": "List of all the Id Card Requested !!",
                     "items": itemValues
                   }
                 }
@@ -298,13 +281,16 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       }
     }
     if(req.body.result.metadata.intentName == 'ViewSelectedRequests') {
-      console.log("id in follow up"+ JSON.stringify (req.body.result));
+      /*(console.log("id in follow up"+ JSON.stringify (req.body.result));
+      console.log("Type of identity Number is " +typeof keySelected);*/
+
       var keySelected = req.body.result.parameters.number;
-      console.log("Type of identity Number is " +typeof keySelected);
       
       return res.json({
-        "speech": "Information for selected id Card",
-        "displayText": "Information for selected id Card",
+        "speech": "Below is Detailed information of ID Card submitted by " 
+        + requestCard[keySelected - 1].name,
+        "displayText": "Below is Detailed information of ID Card submitted by " 
+        + requestCard[keySelected - 1].name,
         "data": {
           "google": {
             "expectedUserResponse":true,
@@ -312,13 +298,14 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
               "items" : [
                 {
                   "simpleResponse" : {
-                  "textToSpeech": "Detailed information of selected id Card :"
+                  "textToSpeech": "Below mentioned is the detailed information of ID Card Requested by " 
+                  + requestCard[keySelected - 1].name 
                 }
               },
               {
                 "basicCard": {
                   "title": "Identity Card",
-                  "subtitle": " Identity Number : " + requestCard[keySelected - 1].id_number + "  \n",
+                  "subtitle": " Request Number : " + requestCard[keySelected - 1].id_number + "  \n",
                   "formattedText": "**Name** : " + requestCard[keySelected - 1].name + "  \n" +
                   "**Phone Number** : " + requestCard[keySelected - 1].number +"  \n" +
                   "**Email ID** : " + requestCard[keySelected - 1].email + "  \n" +
@@ -330,10 +317,10 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
             ],
             "suggestions": [
               {
-                "title": "create Id Card"
+                "title": "Create ID Card"
               },
               {
-                "title": "exit"
+                "title": "Exit"
               }
             ]
           }
