@@ -25,7 +25,7 @@ app.post("/demo", function(req, res) {
         displayText: "What is your name ?", 
         source: "agent"
       });
-    } else if (!req.body.result.parameters.email) {
+    } else if (!req.body.result.parameters.email || req.body.result.action == "input.unknown") {
       return res.json({
         speech: "May I know your email Id",
         displayText: "May I know your email Id", 
