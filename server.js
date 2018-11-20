@@ -109,7 +109,7 @@ app.post("/demo", function(req, res) {
                       "items" : [
                         {
                           "simpleResponse" : {
-                              "textToSpeech": "OK" + id.name + ", Your ID card request is Submitted Succesfully!!"
+                              "textToSpeech": "OK " + id.name + ", Your ID card request is Submitted Succesfully!!"
                             }
                         },
                         {
@@ -281,16 +281,16 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       }
     }
     if(req.body.result.metadata.intentName == 'ViewSelectedRequests') {
-      /*(console.log("id in follow up"+ JSON.stringify (req.body.result));
-      console.log("Type of identity Number is " +typeof keySelected);*/
+      (console.log("id in follow up"+ JSON.stringify (req.body.result));
+      console.log("Type of identity Number is " +typeof keySelected);
 
       var keySelected = req.body.result.parameters.number;
-      
+
       return res.json({
         "speech": "Below is Detailed information of ID Card submitted by " 
-        + requestCard[keySelected - 1].name,
+        + requestCard[keySelected].name,
         "displayText": "Below is Detailed information of ID Card submitted by " 
-        + requestCard[keySelected - 1].name,
+        + requestCard[keySelected].name,
         "data": {
           "google": {
             "expectedUserResponse":true,
@@ -299,18 +299,18 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 {
                   "simpleResponse" : {
                   "textToSpeech": "Below mentioned is the detailed information of ID Card Requested by " 
-                  + requestCard[keySelected - 1].name 
+                  + requestCard[keySelected].name 
                 }
               },
               {
                 "basicCard": {
                   "title": "Identity Card",
-                  "subtitle": " Request Number : " + requestCard[keySelected - 1].id_number + "  \n",
-                  "formattedText": "**Name** : " + requestCard[keySelected - 1].name + "  \n" +
-                  "**Phone Number** : " + requestCard[keySelected - 1].number +"  \n" +
-                  "**Email ID** : " + requestCard[keySelected - 1].email + "  \n" +
-                  "**Designation** : " + requestCard[keySelected - 1].designation,
-                  "image": null,                    
+                  "subtitle": " Request Number : " + requestCard[keySelected].id_number + "  \n",
+                  "formattedText": "**Name** : " + requestCard[keySelected].name + "  \n" +
+                  "**Phone Number** : " + requestCard[keySelected].number +"  \n" +
+                  "**Email ID** : " + requestCard[keySelected].email + "  \n" +
+                  "**Designation** : " + requestCard[keySelected].designation,
+                  "image": "",                    
                   "buttons" : []
                 }
               },
