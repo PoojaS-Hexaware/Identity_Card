@@ -284,11 +284,11 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       var keySelected = req.body.result.parameters.requestnumber;
       console.log("Type of identity Number is " +typeof keySelected);
       for (i=0; i<requestCard.length; i++) {
-        if (requestCard[i] == keySelected) {
+        if (keySelected == requestCard[i]) {
           var m = i;
         }
       }
-
+      console.log("value of m =" +m);
       return res.json({
         "speech": "Below is Detailed information of ID Card submitted by " 
         + requestCard[m].name,
