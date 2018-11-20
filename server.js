@@ -281,9 +281,8 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       }
     } else if(req.body.result.metadata.intentName == 'ViewSelectedRequests') {
       console.log("id in follow up"+ JSON.stringify (req.body.result));
+      var keySelected = req.body.result.parameters.requestnumber;
       console.log("Type of identity Number is " +typeof keySelected);
-
-      var keySelected = req.body.result.parameters.number;
 
       return res.json({
         "speech": "Below is Detailed information of ID Card submitted by " 
