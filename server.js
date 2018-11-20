@@ -18,6 +18,9 @@ app.listen(port, function () {
 });
 
 app.post("/demo", function(req, res) {
+  /*if (req.body.result.metadata.intentName == "") {
+
+  }*/
   if (req.body.result.metadata.intentName == "CreateIdCard") 
   {
     if (!req.body.result.parameters.any) {
