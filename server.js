@@ -21,35 +21,30 @@ app.post("/demo", function(req, res) {
   if (req.body.result.metadata.intentName == "CreateIdCard") {
     if (!req.body.result.parameters.any) {
       return res.json({
-        speech: "What is your name",
-        displayText: "What is your name ?", 
+        speech: "Ok! So tell me your name?",
+        displayText: "Ok! So tell me your name?", 
         source: "agent"
       });
-    } else if (!req.body.result.parameters.email || (req.body.result.action == "input.unknown" && req.body.result.metadata.intentName == "Default Fallback Intent")) {
-      return res.json({
-        speech: "May I know your email Id",
-        displayText: "May I know your email Id", 
-        source: "agent"
-      });
-    }
+    } 
   }
-  if (req.body.result.metadata.intentName == "Create IdCard - custom") {
+  if (req.body.result.metadata.intentName == "IdCardInfo") {
+    
     if (!req.body.result.parameters.email) {
       return res.json({
-        speech: "Give your email Id",
-        displayText: "Give your email Id", 
+        speech: "Tell me your email Id",
+        displayText: "Tell me your email Id", 
         source: "agent"
       });
     } else if (!req.body.result.parameters.number) {
       return res.json({
-        speech: "Give your number",
-        displayText: "Give your number", 
+        speech: "Please tell your Phone Number",
+        displayText: "Please tell your Phone Number", 
         source: "agent"
       });
     } else if (!req.body.result.parameters.Designation) {
       return res.json({
-        "speech": "Give Your Designation",
-        "displayText": "Give Your Designation",
+        "speech": "And your Designation is ?",
+        "displayText": "And your Designation is ?",
 
         "data": {
             "google": {
@@ -58,7 +53,7 @@ app.post("/demo", function(req, res) {
                       "items" : [
                         {
                           "simpleResponse" : {
-                              "textToSpeech": "Give your Designation" 
+                              "textToSpeech": "And your Designation is?" 
                             }
                         }
                       ],
