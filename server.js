@@ -239,10 +239,10 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         //item.push(requestCard[i]);
         itemValues.push({
           "optionInfo": {
-              "key": requestCard[i].id_number,
+              "key": requestCard[i].id_number.toString(),
               "synonyms": [
                   "request number",
-                  requestCard[i].id_number
+                  requestCard[i].id_number.toString()
               ]
           },
           "title": "Submitted request of :" + requestCard[i].name,
