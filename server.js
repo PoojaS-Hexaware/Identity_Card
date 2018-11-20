@@ -99,7 +99,7 @@ app.post("/demo", function(req, res) {
       return res.json({
 
           
-        "speech": "OK" + id.name + ", Your ID card request is Submitted Succesfully!!",
+        "speech": "OK " + id.name + ", Your ID card request is Submitted Succesfully!!",
         "displayText": "Requested updated",
 
         "data": {
@@ -239,10 +239,10 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         //item.push(requestCard[i]);
         itemValues.push({
           "optionInfo": {
-              "key": requestCard[i].id_number.toString(),
+              "key": requestCard[i].id_number,
               "synonyms": [
                   "request number",
-                  requestCard[i].id_number.toString()
+                  requestCard[i].id_number
               ]
           },
           "title": "Submitted request of :" + requestCard[i].name,
