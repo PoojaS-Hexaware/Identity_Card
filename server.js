@@ -292,9 +292,9 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       console.log("value of m =" + m);
       return res.json({
         "speech": "Below is Detailed information of ID Card submitted by " 
-        + requestCard[m].any,
+        + requestCard[m].name,
         "displayText": "Below is Detailed information of ID Card submitted by " 
-        + requestCard[m].any,
+        + requestCard[m].name,
         "data": {
           "google": {
             "expectedUserResponse":true,
@@ -303,17 +303,17 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 {
                   "simpleResponse" : {
                   "textToSpeech": "Below mentioned is the detailed information of ID Card Requested by " 
-                  + requestCard[m].any 
+                  + requestCard[m].name 
                 }
               },
               {
                 "basicCard": {
                   "title": "Identity Card",
                   "subtitle": " Request Number : " + requestCard[m].id_number + "  \n",
-                  "formattedText": "**Name** : " + requestCard[m].any + "  \n" +
+                  "formattedText": "**Name** : " + requestCard[m].name + "  \n" +
                   "**Phone Number** : " + requestCard[m].number +"  \n" +
                   "**Email ID** : " + requestCard[m].email + "  \n" +
-                  "**Designation** : " + requestCard[m].Designation,
+                  "**Designation** : " + requestCard[m].designation,
                   "image": "",                    
                   "buttons" : []
                 }
