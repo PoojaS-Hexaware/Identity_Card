@@ -25,7 +25,13 @@ app.post("/demo", function(req, res) {
         displayText: "What is your name ?", 
         source: "agent"
       });
-    } else if (!req.body.result.parameters.email || req.body.result.metadata.intentName == "Default Fallback Intent") {
+    } else if (!req.body.result.parameters.email) {
+      return res.json({
+        speech: "May I know your email Id",
+        displayText: "May I know your email Id", 
+        source: "agent"
+      });
+    } else if (req.body.result.metadata.intentName == "Default Fallback Intent") {
       return res.json({
         speech: "May I know your email Id",
         displayText: "May I know your email Id", 
