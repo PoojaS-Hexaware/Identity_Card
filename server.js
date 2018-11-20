@@ -18,7 +18,8 @@ app.listen(port, function () {
 });
 
 app.post("/demo", function(req, res) {
-  if (req.body.result.metadata.intentName == "CreateIdCard") {
+  if (req.body.result.metadata.intentName == "CreateIdCard") 
+  {
     if (!req.body.result.parameters.any) {
       return res.json({
         speech: "Ok! So tell me your name?",
@@ -34,7 +35,8 @@ app.post("/demo", function(req, res) {
         displayText: "Tell me your email Id", 
         source: "agent"
       });
-    } else if (!req.body.result.parameters.number) {
+    } else if (!req.body.result.parameters.number) 
+    {
       return res.json({
         speech: "Please tell your Phone Number",
         displayText: "Please tell your Phone Number", 
@@ -145,7 +147,7 @@ app.post("/demo", function(req, res) {
       });
     }
   }
-  if(req.body.result.metadata.intentName == "ViewRequests") {
+if(req.body.result.metadata.intentName == "ViewRequests") {
     //var requestCards = JSONObject.requestCard;
     //for (var i in requestCard) {
     if (requestCard.length == 0) {
