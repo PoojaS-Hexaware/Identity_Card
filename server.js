@@ -283,6 +283,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       console.log("id in follow up"+ JSON.stringify (req.body.result));
       var keySelected = req.body.result.parameters.requestnumber;
       console.log("Type of identity Number is " +typeof keySelected);
+      var m;
       for (i=0; i<requestCard.length; i++) {
         if (keySelected == requestCard[i]) {
           var m = i;
