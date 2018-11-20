@@ -285,16 +285,16 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       console.log("Type of identity Number is " +typeof keySelected);
       var m;
       for (i=0; i<requestCard.length; i++) {
-        if (keySelected == requestCard[i]) {
+        if (keySelected == requestCard[i].id_number) {
           var m = i;
         }
       }
-      console.log("value of m =" +m);
+      console.log("value of m =" + m);
       return res.json({
         "speech": "Below is Detailed information of ID Card submitted by " 
-        + requestCard[m].name,
+        + requestCard[m].any,
         "displayText": "Below is Detailed information of ID Card submitted by " 
-        + requestCard[m].name,
+        + requestCard[m].any,
         "data": {
           "google": {
             "expectedUserResponse":true,
@@ -303,17 +303,17 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 {
                   "simpleResponse" : {
                   "textToSpeech": "Below mentioned is the detailed information of ID Card Requested by " 
-                  + requestCard[m].name 
+                  + requestCard[m].any 
                 }
               },
               {
                 "basicCard": {
                   "title": "Identity Card",
                   "subtitle": " Request Number : " + requestCard[m].id_number + "  \n",
-                  "formattedText": "**Name** : " + requestCard[m].name + "  \n" +
+                  "formattedText": "**Name** : " + requestCard[m].any + "  \n" +
                   "**Phone Number** : " + requestCard[m].number +"  \n" +
                   "**Email ID** : " + requestCard[m].email + "  \n" +
-                  "**Designation** : " + requestCard[m].designation,
+                  "**Designation** : " + requestCard[m].Designation,
                   "image": "",                    
                   "buttons" : []
                 }
