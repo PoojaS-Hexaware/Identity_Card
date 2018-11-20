@@ -281,8 +281,8 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       }
     }
     if(req.body.result.metadata.intentName == 'ViewSelectedRequests') {
-      (console.log("id in follow up"+ JSON.stringify (req.body.result));
-      console.log("Type of identity Number is " +typeof keySelected);
+      (console.log("id in follow up"+ JSON.stringify (req.body.result)));
+      (console.log("Type of identity Number is " +typeof keySelected));
 
       var keySelected = req.body.result.parameters.number;
 
