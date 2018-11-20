@@ -27,8 +27,7 @@ app.post("/demo", function(req, res) {
       });
     } 
   }
-  if (req.body.result.metadata.intentName == "IdCardInfo") {
-    
+  if (req.body.result.metadata.intentName == "IdCardInfo") {    
     if (!req.body.result.parameters.email) {
       return res.json({
         speech: "Tell me your email Id",
@@ -83,13 +82,8 @@ app.post("/demo", function(req, res) {
       });
     } else {
       id_number += 1;
-      req.body.result.contexts.forEach(function(context){
-          if(context.name == 'createidcard-followup'){
-            RequestedName = context.parameters.any;
-          }  
-      })
       var id = {
-        'name'  : RequestedName,
+        'name'  : req.body.result.parameters.any,
         'email' : req.body.result.parameters.email,
         'number' : req.body.result.parameters.number,
         'designation' : req.body.result.parameters.Designation,
@@ -298,7 +292,7 @@ app.post("/demo", function(req, res) {
         });
       }
     }
-    if(req.body.result.metadata.intentName == 'ViewRequests - custom') {
+    if(req.body.result.metadata.intentName == 'ViewSelectedRequests') {
       console.log("id in follow up"+ JSON.stringify (req.body.result));
       var keySelected = req.body.result.parameters.number;
       console.log("Type of identity Number is " +typeof keySelected);
