@@ -248,7 +248,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
           "title": "Submitted request of :" + requestCard[i].name,
           "description": "Designation : " + requestCard[i].designation,
         })
-      }
+      }   
       return res.json({
         "speech": "List of Id Card Requested",
         "displayText": "List of Id Card Requested",
