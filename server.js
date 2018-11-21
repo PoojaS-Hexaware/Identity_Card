@@ -335,7 +335,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       if(err) {
         console.log('error: '+err)
       }
-     console.log(body.ID_CARD_REQUESTS);
+     console.log(body.IDCARDREQUESTS.CARD_REQUESTS);
     });
   }   
 });
