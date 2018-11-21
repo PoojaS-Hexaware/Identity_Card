@@ -1,6 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var test_url = 'https://isg-poc.herokuapp.com/REQUESTSTATUS';
 var port = process.env.PORT || 3000;
+var http = require('http');
+var request = require('request');
 var app = express();
 var requestCard = [] 
 
@@ -18,9 +21,7 @@ app.listen(port, function () {
 });
 
 app.post("/demo", function(req, res) {
-  /*if (req.body.result.metadata.intentName == "") {
-
-  }*/
+  
   if (req.body.result.metadata.intentName == "CreateIdCard") 
   {
     if (!req.body.result.parameters.any) {
@@ -279,7 +280,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
           }
         });
       }
-    } else if(req.body.result.metadata.intentName == 'ViewSelectedRequests') {
+    } else if(req.body.result.metadata.intentName == 'ViewSelectedRequests') { 
       console.log("id in follow up"+ JSON.stringify (req.body.result));
       var keySelected = req.body.result.parameters.requestnumber;
       console.log("Type of identity Number is " +typeof keySelected);
@@ -328,5 +329,12 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         }
       }
     });
-  }    
+  } else if (req.body.result.metadata.intentName == "ViewStatus") {
+    var view_status = [];
+    request.post(test_url, { json: true }, (err, respi, body) => {
+      if(err) {
+        console.log('error: '+err)
+      }
+    });
+  }   
 });
