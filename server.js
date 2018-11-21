@@ -313,8 +313,6 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                   "**Phone Number** : " + requestCard[keySelected].number +"  \n" +
                   "**Email ID** : " + requestCard[keySelected].email + "  \n" +
                   "**Designation** : " + requestCard[keySelected].designation,
-                  "image": "",                    
-                  "buttons" : []
                 }
               },
             ],
