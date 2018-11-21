@@ -335,7 +335,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       if(!err) {
         console.log(body);
       }
-      return response.json({
+      return res.json({
         speech: "Following is status",
         displayText: "Status below", 
         source: "agent"
