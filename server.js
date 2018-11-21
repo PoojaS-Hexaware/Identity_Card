@@ -331,11 +331,11 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     });
   } else if (req.body.result.metadata.intentName == "ViewStatus") {
     var view_status = [];
-    request.post(test_url, { json: true }, (err, respi, body) => {
-      if(err) {
-        console.log('error: '+err)
+    request.post(test_url, { json: true }, (err, response, body) => {
+      if(!err) {
+        console.log(body);
       }
-     console.log(body);
+     
     });
   }   
 });
