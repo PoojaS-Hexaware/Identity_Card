@@ -141,7 +141,7 @@ app.post("/demo", function(req, res) {
         "contextOut": [
           {
             "name": "_actions_on_google",
-            "lifespan": 99,
+            "lifespan": 10,
             "parameters": {
             "data": "{}"
             }
@@ -239,10 +239,10 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         //item.push(requestCard[i]);
         itemValues.push({
           "optionInfo": {
-              "key": i.toString(),
+              "key": requestCard[i].id_number.toString(),
               "synonyms": [
                   "request number",
-                  i.toString()
+                   requestCard[i].id_number.toString()
               ]
           },
           "title": "Submitted request of :" + requestCard[i].name,
