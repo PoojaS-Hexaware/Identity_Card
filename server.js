@@ -288,13 +288,12 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         if (keySelected == requestCard[i].id_number) {
           var m = i;
         }
-      }
-      console.log("value of m =" + m);*/
+      }*/
+      console.log("value of keySelected =" + keySelected);
       return res.json({
         "speech": "Below is Detailed information of ID Card submitted by " 
         + requestCard[keySelected].name,
-        "displayText": "Below is Detailed information of ID Card submitted by " 
-        + requestCard[keySelected].name,
+        "displayText": "Below is Detailed information of ID Card submitted",
         "data": {
           "google": {
             "expectedUserResponse":true,
