@@ -333,7 +333,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     var view_status = [];
     request.post(test_url, { json: true }, (err, response, body) => {
       if(!err) {
-        console.log(body.IDCARDREQUESTS.CARD_REQUESTS);
+        console.log(body);
       }     
     });
   }   
