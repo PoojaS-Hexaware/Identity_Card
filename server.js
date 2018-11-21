@@ -281,20 +281,20 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       }
     } else if(req.body.result.metadata.intentName == 'ViewSelectedRequests') {
       console.log("id in follow up"+ JSON.stringify (req.body.result));
-      var keySelected = req.body.result.parameters.requestnumber;
+      var keySelected = req.body.result.parameters.OPTION;
       console.log("Type of identity Number is " +typeof keySelected);
-      var m;
+      /*var m;
       for (i=0; i<requestCard.length; i++) {
         if (keySelected == requestCard[i].id_number) {
           var m = i;
         }
       }
-      console.log("value of m =" + m);
+      console.log("value of m =" + m);*/
       return res.json({
         "speech": "Below is Detailed information of ID Card submitted by " 
-        + requestCard[m].name,
+        + requestCard[keySelected].name,
         "displayText": "Below is Detailed information of ID Card submitted by " 
-        + requestCard[m].name,
+        + requestCard[keySelected].name,
         "data": {
           "google": {
             "expectedUserResponse":true,
@@ -303,17 +303,17 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 {
                   "simpleResponse" : {
                   "textToSpeech": "Below mentioned is the detailed information of ID Card Requested by " 
-                  + requestCard[m].name 
+                  + requestCard[keySelected].name 
                 }
               },
               {
                 "basicCard": {
                   "title": "Identity Card",
-                  "subtitle": " Request Number : " + requestCard[m].id_number + "  \n",
-                  "formattedText": "**Name** : " + requestCard[m].name + "  \n" +
-                  "**Phone Number** : " + requestCard[m].number +"  \n" +
-                  "**Email ID** : " + requestCard[m].email + "  \n" +
-                  "**Designation** : " + requestCard[m].designation,
+                  "subtitle": " Request Number : " + requestCard[keySelected].id_number + "  \n",
+                  "formattedText": "**Name** : " + requestCard[keySelected].name + "  \n" +
+                  "**Phone Number** : " + requestCard[keySelected].number +"  \n" +
+                  "**Email ID** : " + requestCard[keySelected].email + "  \n" +
+                  "**Designation** : " + requestCard[keySelected].designation,
                   "image": "",                    
                   "buttons" : []
                 }
