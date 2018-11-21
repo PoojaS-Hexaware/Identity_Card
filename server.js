@@ -334,7 +334,12 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     request.post(test_url, { json: true }, (err, response, body) => {
       if(!err) {
         console.log(body);
-      }     
+      }
+      return response.json({
+        speech: "Following is status",
+        displayText: "Status below", 
+        source: "agent"
+      })
     });
   }   
 });
