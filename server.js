@@ -339,6 +339,14 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       if(!err) {
         console.log((body['ID CARD REQUESTS'].CARD_REQUESTS));
         for (var i=0; i < array_length; i++) {
+          if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Pending") {
+            pending_count++;
+            console.log(pending_count);
+          } else if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Dispatched") {
+            dispatched_count++;
+          } else {
+            closed_count++;
+          }
           view_status.push({
             "optionInfo": {
                 "key": i.toString(),
@@ -351,15 +359,6 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
             "description": "Designation : " +body['ID CARD REQUESTS'].CARD_REQUESTS[i].DESIGNATION + "  \n"
             + "Current Status : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS,
           });
-          if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Pending") {
-            pending_count++;
-            console.log(pending_count)
-          } else if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Dispatched") {
-            dispatched_count++;
-          } else {
-            closed_count++;
-          }
-        }
         //console.log("array: "+view_status);
       }
       return res.json({
@@ -393,6 +392,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
             }
           }
         });
-      });
-    }
-  })
+      }
+    });
+  }
+})
