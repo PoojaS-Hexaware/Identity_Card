@@ -372,9 +372,9 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                   {
                     "simpleResponse": {
                       "textToSpeech": "Following are the Status of Id Card requested!!" + "  \n"
-                      + "Total Request : " + array_length + "  \n" 
-                      + "Pending Request : " + pending_count + " Request Dispatched : " + dispatched_count
-                      + "  \n" + "And about " + closed_count + " request are closed." 
+                      + "Total Request : " +array_length + "  \n" 
+                      + "Pending :" +pending_count + ", Request Dispatched : " +dispatched_count
+                      + "  \n" + "And about " +closed_count + " request are closed." 
                     }
                   }
                 ]
