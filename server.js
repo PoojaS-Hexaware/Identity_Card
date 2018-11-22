@@ -13,7 +13,6 @@ var requestCard = []
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.get('/', function (req, res) {
- //global.speech = req.outputContexts.parameters.any;
  res.send(JSON.stringify({ Hello: 'World'}));
 });
 app.listen(port, function () {
@@ -96,7 +95,6 @@ app.post("/demo", function(req, res) {
         'id_number' : id_number
       }
       requestCard.push(id);
-      console.log(id);
       return res.json({
 
           
@@ -152,8 +150,6 @@ app.post("/demo", function(req, res) {
     }
   }
 if(req.body.result.metadata.intentName == "ViewRequests") {
-    //var requestCards = JSONObject.requestCard;
-    //for (var i in requestCard) {
     if (requestCard.length == 0) {
       return res.json({
         "speech": "Sorry, No request Submitted !!",
@@ -237,7 +233,6 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     } else {
       var itemValues = []
       for (var i = 0; i < requestCard.length; i++) {     
-        //item.push(requestCard[i]);
         itemValues.push({
           "optionInfo": {
               "key": i.toString(),
@@ -281,16 +276,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         });
       }
     } else if(req.body.result.metadata.intentName == 'ViewSelectedRequests') { 
-      console.log("id in follow up"+ JSON.stringify (req.body.result));
       var keySelected = req.body.result.parameters.requestnumber;
-      console.log("Type of identity Number is " +typeof keySelected);
-      /*var m;
-      for (i=0; i<requestCard.length; i++) {
-        if (keySelected == requestCard[i].id_number) {
-          var m = i;
-        }
-      }*/
-      console.log("value of keySelected =" + keySelected);
       return res.json({
         "speech": "Below is Detailed information of ID Card submitted by " 
         + requestCard[keySelected].name,
@@ -337,11 +323,9 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     request.post(test_url, { json: true }, (err, response, body) => {
       array_length = (body['ID CARD REQUESTS'].CARD_REQUESTS).length;
       if(!err) {
-        console.log((body['ID CARD REQUESTS'].CARD_REQUESTS));
         for (var i=0; i < array_length; i++) {
           if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Pending") {
             pending_count++;
-            console.log(pending_count);
           } else if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Dispatched") {
             dispatched_count++;
           } else {
@@ -359,7 +343,6 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
             "description": "Designation : " +body['ID CARD REQUESTS'].CARD_REQUESTS[i].DESIGNATION + "  \n"
             + "Current Status : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS,
           });
-        //console.log("array: "+view_status);
       }
       return res.json({
         "speech": "Status of Id Card Requested",
@@ -431,6 +414,9 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                       "suggestions": [
                         {
                             "title": "Create ID Card"
+                        },
+                        {
+                          "title": "View Requests"
                         },
                         {
                             "title": "Exit"
