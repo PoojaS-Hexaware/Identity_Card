@@ -331,9 +331,12 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     });
   } else if (req.body.result.metadata.intentName == "ViewStatus") {
     var view_status = [];
+    var pending_count;
+    var dispatched_count;
+    var closed_count;
     request.post(test_url, { json: true }, (err, response, body) => {
       if(!err) {
-        console.log((body['ID CARD REQUESTS'].CARD_REQUESTS));
+        //console.log((body['ID CARD REQUESTS'].CARD_REQUESTS));
         for (var i=0; i < (body['ID CARD REQUESTS'].CARD_REQUESTS).length; i++) {
           view_status.push({
             "optionInfo": {
@@ -344,11 +347,20 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 ]
             },
             "title": "ID Card of :" + body['ID CARD REQUESTS'].CARD_REQUESTS[i].NAME,
-            "description": "Current Status : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS + "  \n"
-            +"Designation : " +body['ID CARD REQUESTS'].CARD_REQUESTS[i].DESIGNATION,
+            "description": "Designation : " +body['ID CARD REQUESTS'].CARD_REQUESTS[i].DESIGNATION + "  \n"
+            + "Current Status : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS,
           })
         }
-        console.log("array: "+view_status);
+        for (var i=0; i< (body['ID CARD REQUESTS'].CARD_REQUESTS).length; i++) {
+          if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Pending") {
+            pending_count++;
+          } else if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Dispatched") {
+            dispatched_count++;
+          } else {
+            closed_count++;
+          }
+        }
+        //console.log("array: "+view_status);
       }
       return res.json({
         "speech": "Status of Id Card Requested",
@@ -360,8 +372,10 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 "items": [
                   {
                     "simpleResponse": {
-                      "textToSpeech": "Following are the Status of Id Card request submitted!!" + "  \n" 
-                      + "Choose one for detailed information."
+                      "textToSpeech": "Following are the Status of Id Card requested!!" + "  \n"
+                      + "Total Request : " + body['ID CARD REQUESTS'].CARD_REQUESTS.length + "  \n" 
+                      + "Pending Request : " +pending_count + " Request Dispatched : " + dispatched_count
+                      + "  \n" + "And about " +closed_count + "request are closed." 
                     }
                   }
                 ]
