@@ -350,12 +350,10 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
             "title": "ID Card of :" + body['ID CARD REQUESTS'].CARD_REQUESTS[i].NAME,
             "description": "Designation : " +body['ID CARD REQUESTS'].CARD_REQUESTS[i].DESIGNATION + "  \n"
             + "Current Status : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS,
-          })
-        }
-        for (var i=0; i< array_length; i++) {
+          });
           if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Pending") {
             pending_count++;
-            console.log(pending_count);
+            console.log(pending_count)
           } else if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Dispatched") {
             dispatched_count++;
           } else {
@@ -375,9 +373,9 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                   {
                     "simpleResponse": {
                       "textToSpeech": "Following are the Status of Id Card requested!!" + "  \n"
-                      + "Total Request : " + body['ID CARD REQUESTS'].CARD_REQUESTS.length + "  \n" 
+                      + "Total Request : " + array_length + "  \n" 
                       + "Pending Request : " +pending_count + " Request Dispatched : " + dispatched_count
-                      + "  \n" + "And about " +closed_count + "request are closed." 
+                      + "  \n" + "And about " + closed_count + " request are closed." 
                     }
                   }
                 ]
