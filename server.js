@@ -343,8 +343,9 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                      i.toString()
                 ]
             },
-            "title": "Submitted request of :" + body['ID CARD REQUESTS'].CARD_REQUESTS[i].NAME,
-            "description": "Designation : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].DESIGNATION,
+            "title": "ID Card of :" + body['ID CARD REQUESTS'].CARD_REQUESTS[i].NAME,
+            "description": "Current Status : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS + "  \n"
+            +"Designation : " +body['ID CARD REQUESTS'].CARD_REQUESTS[i].DESIGNATION,
           })
         }
         console.log("array: "+view_status);
@@ -367,10 +368,11 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
               },
               "systemIntent": {
                 "intent": "actions.intent.OPTION",
-                "inputValueData": {
+                "data": {
                   "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                  "carouselSelect": {
-                    "items": view_status,
+                  "listSelect": {
+                    "title": "Status of all the Id Card Requested !!",
+                    "items": view_status
                   }
                 }
               }
