@@ -140,7 +140,7 @@ app.post("/demo", function(req, res) {
         "contextOut": [
           {
             "name": "_actions_on_google",
-            "lifespan": 10,
+            "lifespan": 2,
             "parameters": {
             "data": "{}"
             }
@@ -223,7 +223,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         "contextOut": [
           {
             "name": "_actions_on_google",
-            "lifespan": 99,
+            "lifespan": 2,
             "parameters": {
             "data": "{}"
             }
