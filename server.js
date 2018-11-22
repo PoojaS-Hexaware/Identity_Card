@@ -404,7 +404,35 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                                               "bar-alt-2"
                                           ]
                                       }
+                                  },
+                                  {
+                                    "title": "Pooja",
+                                    "image": {
+                                        "url": "http://example.com/bar.jpg",
+                                        "accessibilityText": "Bar title"
+                                    },
+                                    "optionInfo": {
+                                        "key": "Pooja-key",
+                                        "synonyms": [
+                                            "Pooja-alt-1",
+                                            "Pooja-alt-2"
+                                        ]
+                                    }
+                                },
+                                {
+                                  "title": "Akash",
+                                  "image": {
+                                      "url": "http://example.com/bar.jpg",
+                                      "accessibilityText": "Bar title"
+                                  },
+                                  "optionInfo": {
+                                      "key": "akash-key",
+                                      "synonyms": [
+                                          "akash-alt-1",
+                                          "akash-alt-2"
+                                      ]
                                   }
+                              }
                               ]
                           }
                       }
