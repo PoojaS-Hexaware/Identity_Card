@@ -355,16 +355,16 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         "data": {
             "google": {
               "expectUserResponse": true,
-              "richResponse": {
-                "items": [
-                  {
-                    "simpleResponse": {
-                      "textToSpeech": "Following are the Status of Id Card request submitted!!" + "  \n" 
-                      + "Choose one for detailed information."
-                    }
-                  }
-                ]
-              },
+              "expectedInputs": [
+                {
+                    "inputPrompt": {
+                        "initialPrompts": [
+                            {
+                                "textToSpeech": "Alright! Here are a few things you can learn. Which sounds interesting?"
+                            }
+                        ],
+                        "noInputPrompts": []
+                    },
             "possibleIntents": [
                 {
                     "intent": "actions.intent.OPTION",
@@ -427,6 +427,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 }
             ]
         }
+      ]
         /*"speech": "Status of Id Card Requested",
         "displayText": "Status of Id Card Requested",
         "data": {
@@ -454,7 +455,8 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
             }
         }*/
           }
-        });
-      })
-    }
+        }
+      });
+    })
+  }
 });
