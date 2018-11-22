@@ -331,12 +331,12 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     });
   } else if (req.body.result.metadata.intentName == "ViewStatus") {
     var view_status = [];
+    var pending_count = 0;
+    var dispatched_count = 0;
+    var closed_count = 0;
     request.post(test_url, { json: true }, (err, response, body) => {
       array_length = (body['ID CARD REQUESTS'].CARD_REQUESTS).length;
       if(!err) {
-        var pending_count;
-        var dispatched_count;
-        var closed_count;
         console.log((body['ID CARD REQUESTS'].CARD_REQUESTS));
         for (var i=0; i < array_length; i++) {
           if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Pending") {
