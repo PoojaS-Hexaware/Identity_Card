@@ -350,8 +350,6 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         console.log("array: "+view_status);
       }
       return res.json({
-        "speech": "Status of Id Card Requested",
-        "displayText": "Status of Id Card Requested",
         "data": {
             "google": {
               "expectUserResponse": true,
