@@ -330,6 +330,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       }
     });
   } else if (req.body.result.metadata.intentName == "ViewStatus") {
+    array_length = body['ID CARD REQUESTS'].CARD_REQUESTS.length;
     var view_status = [];
     var pending_count;
     var dispatched_count;
@@ -337,7 +338,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     request.post(test_url, { json: true }, (err, response, body) => {
       if(!err) {
         //console.log((body['ID CARD REQUESTS'].CARD_REQUESTS));
-        for (var i=0; i < (body['ID CARD REQUESTS'].CARD_REQUESTS).length; i++) {
+        for (var i=0; i < array_length; i++) {
           view_status.push({
             "optionInfo": {
                 "key": i.toString(),
@@ -351,9 +352,10 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
             + "Current Status : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS,
           })
         }
-        for (var i=0; i< (body['ID CARD REQUESTS'].CARD_REQUESTS).length; i++) {
+        for (var i=0; i< array_length; i++) {
           if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Pending") {
             pending_count++;
+            console.log(pending_count);
           } else if(body['ID CARD REQUESTS'].CARD_REQUESTS[i].STATUS == "Dispatched") {
             dispatched_count++;
           } else {
