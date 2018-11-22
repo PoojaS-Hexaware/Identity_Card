@@ -334,7 +334,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     request.post(test_url, { json: true }, (err, response, body) => {
       if(!err) {
         console.log((body['ID CARD REQUESTS'].CARD_REQUESTS));
-        for (var i=0; i < body['ID CARD REQUESTS'].CARD_REQUESTS; i++) {
+        for (var i=0; i < (body['ID CARD REQUESTS'].CARD_REQUESTS); i++) {
           view_status.push({
             "optionInfo": {
                 "key": i.toString(),
