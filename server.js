@@ -308,6 +308,9 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 "title": "Create ID Card"
               },
               {
+                "title": "View Status"
+              },
+              {
                 "title": "Exit"
               }
             ]
@@ -354,8 +357,8 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 "items": [
                   {
                     "simpleResponse": {
-                      "displayText": "Following are the Status of Id Card requested!!",
-                      "speech": "Total Request : " +array_length + "  \n"+ "Pending :" +pending_count + ", Request Dispatched : " +dispatched_count
+                      "textToSpeech": "Following are the Status of Id Card requested!! Total Request : " +array_length + "  \n" 
+                      + "Pending :" +pending_count + ", Request Dispatched : " +dispatched_count
                       + "  \n" + "And about " +closed_count + " closed." 
                     }
                   }
