@@ -350,18 +350,21 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         console.log("array: "+view_status);
       }
       return res.json({
-        "conversationToken": "",
-    "expectUserResponse": true,
-    "expectedInputs": [
-        {
-            "inputPrompt": {
-                "initialPrompts": [
-                    {
-                        "textToSpeech": "Alright! Here are a few things you can learn. Which sounds interesting?"
+        "speech": "Status of Id Card Requested",
+        "displayText": "Status of Id Card Requested",
+        "data": {
+            "google": {
+              "expectUserResponse": true,
+              "richResponse": {
+                "items": [
+                  {
+                    "simpleResponse": {
+                      "textToSpeech": "Following are the Status of Id Card request submitted!!" + "  \n" 
+                      + "Choose one for detailed information."
                     }
-                ],
-                "noInputPrompts": []
-            },
+                  }
+                ]
+              },
             "possibleIntents": [
                 {
                     "intent": "actions.intent.OPTION",
@@ -424,8 +427,6 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 }
             ]
         }
-    ]
-});
         /*"speech": "Status of Id Card Requested",
         "displayText": "Status of Id Card Requested",
         "data": {
@@ -443,7 +444,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
               },
               "systemIntent": {
                 "intent": "actions.intent.OPTION",
-                "data": {
+                "inputValueData": {
                   "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                   "carouselSelect": {
                     "items": view_status,
@@ -452,6 +453,8 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
               }
             }
         }*/
+          }
         });
+      })
     }
 });
