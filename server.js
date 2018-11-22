@@ -350,97 +350,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         console.log("array: "+view_status);
       }
       return res.json({
-          "speech": "Hello",
-          "contextOut": [
-              {
-                  "name": "_actions_on_google_",
-                  "lifespan": 100,
-                  "parameters": {}
-              }
-          ],
-          "data": {
-              "google": {
-                  "expectUserResponse": true,
-                  "richResponse": {
-                      "items": [
-                          {
-                              "simpleResponse": {
-                                  "textToSpeech": "Hello"
-                              }
-                          }
-                      ],
-                      "suggestions": []
-                  },
-                  "systemIntent": {
-                      "intent": "actions.intent.OPTION",
-                      "data": {
-                          "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                          "carouselSelect": {
-                              "items": [
-                                  {
-                                      "title": "Foo",
-                                      "image": {
-                                          "url": "http://example.com/foo.jpg",
-                                          "accessibilityText": "Foo title"
-                                      },
-                                      "optionInfo": {
-                                          "key": "foo-key",
-                                          "synonyms": [
-                                              "foo-alt-1",
-                                              "foo-alt-2"
-                                          ]
-                                      }
-                                  },
-                                  {
-                                      "title": "Bar",
-                                      "image": {
-                                          "url": "http://example.com/bar.jpg",
-                                          "accessibilityText": "Bar title"
-                                      },
-                                      "optionInfo": {
-                                          "key": "bar-key",
-                                          "synonyms": [
-                                              "bar-alt-1",
-                                              "bar-alt-2"
-                                          ]
-                                      }
-                                  },
-                                  {
-                                    "title": "Pooja",
-                                    "image": {
-                                        "url": "http://example.com/bar.jpg",
-                                        "accessibilityText": "Bar title"
-                                    },
-                                    "optionInfo": {
-                                        "key": "Pooja-key",
-                                        "synonyms": [
-                                            "Pooja-alt-1",
-                                            "Pooja-alt-2"
-                                        ]
-                                    }
-                                },
-                                {
-                                  "title": "Akash",
-                                  "image": {
-                                      "url": "http://example.com/bar.jpg",
-                                      "accessibilityText": "Bar title"
-                                  },
-                                  "optionInfo": {
-                                      "key": "akash-key",
-                                      "synonyms": [
-                                          "akash-alt-1",
-                                          "akash-alt-2"
-                                      ]
-                                  }
-                              }
-                              ]
-                          }
-                      }
-                  }
-              }
-          }
-      });
-        /*"speech": "Status of Id Card Requested",
+        "speech": "Status of Id Card Requested",
         "displayText": "Status of Id Card Requested",
         "data": {
             "google": {
@@ -465,7 +375,8 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 }
               }
             }
-        }*/
+          }
+        });
       });
     }
-})
+  })
