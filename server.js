@@ -350,6 +350,8 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
         console.log("array: "+view_status);
       }
       return res.json({
+        "conversationToken": "",
+        "expectUserResponse": true,
         "data": {
             "google": {
               "expectUserResponse": true,
