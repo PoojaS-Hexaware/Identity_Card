@@ -347,6 +347,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
             "description": "Designation : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].DESIGNATION,
           })
         }
+        console.log("array: "+view_status);
       }
       return res.json({
         "speech": "Status of Id Card Requested",
@@ -369,7 +370,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 "data": {
                   "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                   "carouselSelect": {
-                    "items": [{view_status}]
+                    "items": view_status,
                   }
                 }
               }
