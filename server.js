@@ -330,7 +330,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       }
     });
   } else if (req.body.result.metadata.intentName == "ViewStatus") {
-    array_length = body['ID CARD REQUESTS'].CARD_REQUESTS.length;
+    array_length = (body['ID CARD REQUESTS'].CARD_REQUESTS).length;
     var view_status = [];
     var pending_count;
     var dispatched_count;
@@ -374,7 +374,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                     "simpleResponse": {
                       "textToSpeech": "Following are the Status of Id Card requested!!" + "  \n"
                       + "Total Request : " + array_length + "  \n" 
-                      + "Pending Request : " +pending_count + " Request Dispatched : " + dispatched_count
+                      + "Pending Request : " + pending_count + " Request Dispatched : " + dispatched_count
                       + "  \n" + "And about " + closed_count + " request are closed." 
                     }
                   }
