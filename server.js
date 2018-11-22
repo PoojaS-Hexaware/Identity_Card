@@ -406,7 +406,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                       "items" : [
                         {
                           "simpleResponse" : {
-                              "textToSpeech": "Mr. " +body['ID CARD REQUESTS'].CARD_REQUESTS[key].NAME+ " your ID's, current Status is: "
+                              "textToSpeech": "Ms/Mrs/Mr. " +body['ID CARD REQUESTS'].CARD_REQUESTS[key].NAME+ " your ID's, current Status is: "
                               +body['ID CARD REQUESTS'].CARD_REQUESTS[key].STATUS 
                             }
                         }
