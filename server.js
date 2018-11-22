@@ -334,12 +334,49 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     request.post(test_url, { json: true }, (err, response, body) => {
       if(!err) {
         console.log((body['ID CARD REQUESTS'].CARD_REQUESTS));
+        for (var i=0; i < body['ID CARD REQUESTS'].CARD_REQUESTS; i++) {
+          view_status.push({
+            "optionInfo": {
+                "key": i.toString(),
+                "synonyms": [
+                    "request number",
+                     i.toString()
+                ]
+            },
+            "title": "Submitted request of :" + body['ID CARD REQUESTS'].CARD_REQUESTS[i].NAME,
+            "description": "Designation : " + body['ID CARD REQUESTS'].CARD_REQUESTS[i].DESIGNATION,
+          })
+        }
       }
       return res.json({
-        speech: "Following is status",
-        displayText: "Status below", 
-        source: "agent"
+        "speech": "Status of Id Card Requested",
+        "displayText": "Status of Id Card Requested",
+        "data": {
+            "google": {
+              "expectUserResponse": true,
+              "richResponse": {
+                "items": [
+                  {
+                    "simpleResponse": {
+                      "textToSpeech": "Following are the Status of Id Card request submitted!!" + "  \n" 
+                      + "Choose one for detailed information."
+                    }
+                  }
+                ]
+              },
+              "systemIntent": {
+                "intent": "actions.intent.OPTION",
+                "data": {
+                  "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                  "carouselSelect": {
+                    "title": "Status of all the Id Card Requested !!",
+                    "items": view_status
+                  }
+                }
+              }
+            }
+          }
+        });
       })
-    });
-  }   
+    }
 });
