@@ -406,51 +406,42 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
     });
   } else if(req.body.result.metadata.intentName == 'ViewSingleStatus') { 
     console.log("id in follow up"+ JSON.stringify (req.body.result));
-    /*var key = req.body.result.parameters.key;
+    var key = req.body.result.parameters.key;
     console.log("Type of identity Number is " +typeof key);
-    /*var m;
-    for (i=0; i<requestCard.length; i++) {
-      if (keySelected == requestCard[i].id_number) {
-        var m = i;
-      }
-    }
-    console.log("value of keySelected =" + keySelected);
-    return res.json({
-      "speech": "Mr." + requestCard[keySelected].name,
-      "displayText": "Below is Detailed information of ID Card submitted",
-      "data": {
-        "google": {
-          "expectedUserResponse":true,
-          "richResponse" : {
-            "items" : [
-              {
-                "simpleResponse" : {
-                "textToSpeech": "Below mentioned is the detailed information of ID Card Requested by " 
-                + requestCard[keySelected].name 
-              }
-            },
-            {
-              "basicCard": {
-                "title": "Identity Card",
-                "subtitle": " Request Number : " + requestCard[keySelected].id_number + "  \n",
-                "formattedText": "**Name** : " + requestCard[keySelected].name + "  \n" +
-                "**Phone Number** : " + requestCard[keySelected].number +"  \n" +
-                "**Email ID** : " + requestCard[keySelected].email + "  \n" +
-                "**Designation** : " + requestCard[keySelected].designation,
-              }
-            },
-          ],
-          "suggestions": [
-            {
-              "title": "Create ID Card"
-            },
-            {
-              "title": "Exit"
+    request.post(test_url, { json: true }, (err, response, body) => {
+      if(!err) {
+        return res.json({
+          "speech": "Your ID's Staus is",
+        "displayText": "Your ID's Staus is",
+
+        "data": {
+            "google": {
+              "expectedUserResponse":true,
+              "richResponse" : 
+                {
+                  
+                      "items" : [
+                        {
+                          "simpleResponse" : {
+                              "textToSpeech": "Mr. " +body['ID CARD REQUESTS'].CARD_REQUESTS[key].NAME+ "Your ID's current Status is "
+                              +body['ID CARD REQUESTS'].CARD_REQUESTS[key].STATUS 
+                            }
+                        }
+                      ],
+                      "suggestions": [
+                        {
+                            "title": "Create ID Card"
+                        },
+                        {
+                            "title": "Exit"
+                        }
+                      ]
+                  
+                }
             }
-          ]
-        }
+          }
+        })
       }
-    }
-  });*/
+    })
   }
 })
