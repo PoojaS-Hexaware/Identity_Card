@@ -357,10 +357,9 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 "items": [
                   {
                     "simpleResponse": {
-                      "textToSpeech": "Following are the Status of Id Card requested!!",
-                      "ssml": "Total Request : " +array_length + "  \n" 
-                      + "Pending :" +pending_count + ", Request Dispatched : " +dispatched_count
-                      + "  \n" + "And about " +closed_count + " closed." 
+                      "ssml": "<s>Following are the Status of Id Card requested!! </s>" +"<s> Total Request : </s>" +array_length 
+                      + "  \n" + "<s> Pending :</s>" +pending_count + "<s>, Request Dispatched : </s>" +dispatched_count+
+                      + "  \n" + "<s> And about </s>" +closed_count + " closed." 
                     }
                   }
                 ],
