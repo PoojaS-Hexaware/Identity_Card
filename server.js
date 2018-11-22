@@ -330,12 +330,12 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       }
     });
   } else if (req.body.result.metadata.intentName == "ViewStatus") {
-    array_length = (body['ID CARD REQUESTS'].CARD_REQUESTS).length;
     var view_status = [];
     var pending_count;
     var dispatched_count;
     var closed_count;
     request.post(test_url, { json: true }, (err, response, body) => {
+      array_length = (body['ID CARD REQUESTS'].CARD_REQUESTS).length;
       if(!err) {
         console.log((body['ID CARD REQUESTS'].CARD_REQUESTS));
         for (var i=0; i < array_length; i++) {
