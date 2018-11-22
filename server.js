@@ -369,8 +369,7 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
                 "data": {
                   "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                   "carouselSelect": {
-                    "title": "Status of all the Id Card Requested !!",
-                    "items": view_status
+                    "items": [{view_status}]
                   }
                 }
               }
