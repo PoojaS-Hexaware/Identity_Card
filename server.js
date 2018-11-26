@@ -22,7 +22,7 @@ app.listen(port, function () {
 app.post("/demo", function(req, res) {
   
   if (req.body.result.metadata.intentName == "CreateIdCard")
-  console.log(req);
+  console.log(req.body);
   {
     if (!req.body.result.parameters.any) {
       return res.json({
@@ -152,7 +152,7 @@ app.post("/demo", function(req, res) {
   }
 if(req.body.result.metadata.intentName == "ViewRequests") {
     if (requestCard.length == 0) {
-      console.log(req);
+      console.log(req.body);
       return res.json({
         "speech": "Sorry, No request Submitted !!",
         "displayText": "Sorry, No request Submitted",
