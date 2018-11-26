@@ -151,7 +151,7 @@ app.post("/demo", function(req, res) {
   }
 if(req.body.result.metadata.intentName == "ViewRequests") {
     if (requestCard.length == 0) {
-      console.log(req.body);
+      console.log(JSON.stringify(req.body));
       return res.json({
         "speech": "Sorry, No request Submitted !!",
         "displayText": "Sorry, No request Submitted",
