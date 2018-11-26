@@ -20,7 +20,7 @@ app.listen(port, function () {
 });
 
 app.post("/demo", function(req, res) {
-  
+  console.log(JSON.stringify(req.body));
   if (req.body.result.metadata.intentName == "CreateIdCard")
   {
     if (!req.body.result.parameters.any) {
@@ -150,7 +150,6 @@ app.post("/demo", function(req, res) {
     }
   }
 if(req.body.result.metadata.intentName == "ViewRequests") {
-  console.log(JSON.stringify(req.body));
     if (requestCard.length == 0) {
       return res.json({
         "speech": "Sorry, No request Submitted !!",
@@ -184,7 +183,6 @@ if(req.body.result.metadata.intentName == "ViewRequests") {
       });
     } else if (requestCard.length == 1) {
       return res.json({
-
         "speech": "Following is the only ID Card Submitted till Date",
         "displayText": "Only one Id Card Requested",
 
