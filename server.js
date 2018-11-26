@@ -21,7 +21,8 @@ app.listen(port, function () {
 
 app.post("/demo", function(req, res) {
   
-  if (req.body.result.metadata.intentName == "CreateIdCard") 
+  if (req.body.result.metadata.intentName == "CreateIdCard")
+  console.log(req);
   {
     if (!req.body.result.parameters.any) {
       return res.json({
