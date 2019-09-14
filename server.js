@@ -19,6 +19,15 @@ app.listen(port, function () {
  console.log(`Example app listening on port !`);
 });
 
+
+app.get("/getfile/:data",function(req,res){
+	       
+	         res.sendFile(__dirname+"/"+req.params.data)}
+	});
+	
+
+
+
 app.post("/demo", function(req, res) {
   console.log(JSON.stringify(req.body));
   if (req.body.result.metadata.intentName == "CreateIdCard")
