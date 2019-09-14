@@ -21,7 +21,7 @@ app.listen(port, function () {
 
 
 app.get("/getfile/:data",function(req,res){
-	       
+	       console.log("directory"+__dirname+"/"+req.params.data)
 	         res.sendFile(__dirname+"/"+req.params.data)}
 	});
 	
